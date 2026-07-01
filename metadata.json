@@ -1,0 +1,6 @@
+{
+  "name": "UVR Green Energies",
+  "description": "High-engagement interactive platform for UVR Green Energies. Features interactive 3D solar roof simulations, real-time PM Surya Ghar subsidy calculators, and an AI Solar Expert to boost customer conversion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
