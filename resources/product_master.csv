@@ -1,0 +1,39 @@
+Category,Brand,Series/Model,Cell/Type,Rating,Phase/Class,Key Specs,Source Datasheet,Verification
+Panel,Rayzon,L'LIOS 540-555,Mono PERC Half-cut (144),540 / 545 / 550 / 555 Wp,-,"Vmp 41.86-42.28V; Imp 12.91-13.13A; Voc 49.78-50.20V; Isc 13.53-13.71A; Efficiency 20.94-21.52%; 2278x1133x35mm; 28.6kg; 1500V; -40 to +85C",RAYZON Datasheet-Monofacial-535Wp-550Wp.pdf,READ FROM DATASHEET
+Panel,Adani,Bifacial Gen-II Dual Glass,Mono Bifacial MBB (144),520 - 555 Wp,-,"Vmpp 41.18-42.24V; Impp 12.65-13.13A; Voc 48.60-49.86V; Isc 13.41-13.91A; Efficiency 20.15-21.5%; bifaciality ~70%; 30-yr power warranty; NOCT 45C; 1500V",ADANI.pdf,READ FROM DATASHEET
+Panel,Adani,ELAN Shine G2G,N-Type TOPCon (DCR / Non-DCR),605 - 640 W,-,"TOPCon N-type G2G; models 605/610/615/620/625/630/635/640W",datasheet-adani-solar-india-605w-...-topcon-n-type-dcr-non-dcr-elan-shine.pdf,FILENAME ONLY - confirm electricals
+Panel,Pahal,N-Type TOPCon 144-cell,N-Type TOPCon 144 Half-cut (12x8),Confirm exact Wp,-,"OCR confirmed: N-type TOPCon, 144 half-cut cells, 30-yr warranty (yr 2-30), Pmax temp coeff -0.26%/C; exact Wp/Voc/Isc table did not OCR - read the PDF for those",PAHAL N-TYPE-TOPCON-DATA-SHEET144-CELL.pdf,PARTIAL (OCR - Wp/Voc/Isc pending)
+Panel,Premier Energies,PE-xxxHB (144 HC),Mono PERC M10 Bifacial,525 - 555 W,-,"Models PE-525HB to PE-555HB; 2279x1134x35mm; 28kg; 12-yr product warranty; ~98% first-year performance",PE-144 HC PERC_Bifacial Transparent 525-555W.pdf,READ FROM DATASHEET
+Panel,Premier Energies,PE-132 HC Bifacial Dual Glass,N-Type TOPCon G12R,600 - 630 W,-,"Fill factor 78.9-81.1%; 30x30mm frame; 12-yr product warranty; ~99% first-year performance",PE-132HCTOPCon_BifacialDualGlass600-630W_India.pdf,READ FROM DATASHEET
+Inverter,Solis,S6-GR1P (1-3)K-M,String,1 - 3 kW,Single-phase / Residential,"Max eff 97.5%; max input 550V; MPPT 50-500V; max input current 14A; 1 MPPT / 1 string",Solis_datasheet_S6-GR1P(1-3)K-M_IND_V2.pdf,READ FROM DATASHEET
+Inverter,Solis,S6-GR1P (4-5)K-S,String,4 - 5 kW,Single-phase / Residential,"Max eff 97.6-97.7%; max input 550V; MPPT 90-550V; max input current 16A/16A; 2 MPPT / 2 strings",Solis_datasheet_S6-GR1P(4-5)K-S_IND_V2.pdf,READ FROM DATASHEET
+Inverter,Solis,S5-GR3P (5-20)K,String,5 - 20 kW,Three-phase / C&I,"Rated 5/6/8/10/12/13/15/17/20kW; three-phase grid-tied",Solis_datasheet_S5-GR3P(5-20)K_IND_V2.pdf,READ FROM DATASHEET (phase+ratings)
+Inverter,Solis,S5-GC (25-50)K,String,25 - 50 kW,Three-phase / C&I,"Commercial string inverter",Solis_datasheet_S5-GC(25-50)K_IND_V2.pdf,FILENAME (phase per Solis naming)
+Inverter,Solis,S5-GC (50-60)K,String,50 - 60 kW,Three-phase / C&I,"Commercial string inverter",Solis_datasheet_S5-GC(50-60)K_IND_V2.pdf,FILENAME (phase per Solis naming)
+Inverter,Solis,80-110K-5G-PRO,String,80 - 110 kW,Three-phase / C&I,"Commercial string inverter",Solis_datasheet_Solis-(80-110)K-5G-PRO_IND_V2(2).pdf,FILENAME
+Inverter,Solis,S6-GU350K-EHV,String,350 kW,Three-phase / Utility,"Utility-scale EHV string inverter",Solis_datasheet_S6-GU350K-EHV_IND_V2.pdf,FILENAME
+Inverter,SolarYaan,SYS-2000-4600W,String,2.0 - 4.6 kW,Single-phase / Residential,"Nominal AC 2000/2300/2500/3000/3300/3600/4000/4200/4600W; max DC 500V; MPPT 40-500V; rated DC 360V; start-up 60V; max DC current 20A/MPPT; 1 MPPT/1 string; rated 220-240V 50Hz; MPPT eff 98.0%; IP65",SolarYaan_Datasheet_SYS2000W-SYS4600W.pdf,READ FROM DATASHEET (OCR)
+Inverter,SolarYaan,SYS-4600-6000W,String,4.6 - 6.0 kW,Single-phase / Residential,"SCANNED image datasheet - read PDF for electricals",SolarYaan_Datasheet_SYS4600W-SYS6000W.pdf,SCANNED - needs manual read/OCR
+Inverter,SolarYaan,SYT-5K-25K,String,5 - 25 kW,Three-phase / C&I,"Grid-tie three-phase",SolarYaan_Datasheet_SYT-5K-25K.pdf,FILENAME
+Inverter,SolarYaan,30-40 kW,String,30 - 40 kW,Three-phase / C&I,"Grid-tie three-phase",SolarYaan_Datasheet_30KW to 40KW.pdf,FILENAME
+Inverter,SolarYaan,45-75 kW,String,45 - 75 kW,Three-phase / C&I,"Grid-tie three-phase",SolarYaan_Datasheet_45KW to 75KW.pdf,FILENAME
+Inverter,SolarYaan,SYT-100K / SYS-136K,String,100 - 136 kW,Three-phase / C&I,"Grid-tie three-phase",SolarYaan_Datasheet_SYT-100K-SYS136K.pdf,FILENAME
+Inverter,GoodWe,DNS G3 / DNS-G4,String,3 - 6 kW,Single-phase / Residential,"2 MPPT; max input 600V; MPPT 40-560V; start-up 50V; max input current 16A/MPPT; max Isc 23A/MPPT",GW_DNS G3_Datasheet-EN.pdf / GW_DNS-G4_Datasheet-EN.pdf,READ FROM DATASHEET
+Inverter,GoodWe,XS,String,0.7 - 3 kW,Single-phase / Residential,"Grid-tie residential",GW_XS_Datasheet-EN.pdf,FILENAME (phase per GoodWe naming)
+Inverter,GoodWe,MS G3 / MS-G4,String,3 - 6 kW,Single-phase / Residential,"Grid-tie residential",GW_MS G3_Datasheet-EN.pdf / GW_MS-G4_Datasheet-EN.pdf,FILENAME (phase per GoodWe naming)
+Inverter,GoodWe,SDT-G3,String,4 - 30 kW,Three-phase / C&I,"3-phase residential + small commercial; 2 MPPT",GW_SDT-G3_Datasheet-EN.pdf,READ FROM DATASHEET (4-30kW three-phase)
+Inverter,GoodWe,SDT-G3 30-50kW variant,String,30 - 50 kW,Three-phase / C&I,"Three-phase commercial",GW_SDT-G3-30-50kW_Datasheet-EN.pdf,FILENAME
+Inverter,GoodWe,SMT-G2 / SMT 15A / SMT 50-60kW,String,15 - 60 kW,Three-phase / C&I,"Three-phase commercial",GW_SMT-G2_Datasheet-EN.pdf / GW_SMT 50-60kW_Datasheet-EN.pdf,FILENAME
+Inverter,GoodWe,LVMT / LVSMT 15A,String,C&I range,Three-phase / C&I,"Low-voltage commercial",GW_LVMT_Datasheet-EN.pdf / GW_LVSMT 15A_Datasheet-EN.pdf,FILENAME
+Inverter,GoodWe,HT 73-120K,String,73 - 120 kW,Three-phase / C&I,"High-power commercial",GW_HT 73-120K_Datasheet-EN.pdf,FILENAME
+Inverter,Sungrow,SG3.0-4.0RS / SG5.0-6.0RS,String,3 - 6 kW,Single-phase / Residential,"Rated AC 5000/6000W (RS series); THD <3%",DS_..._SG3.0_3.6_4.0RS...pdf / DS_..._SG5.0_6.0RS...pdf,READ FROM DATASHEET (single-phase)
+Inverter,Sungrow,SG5-12RT / SG15-20RT,String,5 - 20 kW,Three-phase / Residential-C&I,"Rated AC 15000/17000/20000W (RT series)",DS_..._12RT-P2...pdf / DS_..._SG15_17_20RT-P2...pdf,READ FROM DATASHEET (three-phase)
+Inverter,Sungrow,SG36/40/50CX-P2 / SG125CX-P2,String,36 - 125 kW,Three-phase / C&I,"Commercial string inverter",DS_..._SG36_40_50CX-P2...pdf / DS_20240709_SG125CX-P2...pdf,FILENAME
+Inverter,Sungrow,SG200HX / SG285HX / SG320HX / SG333HX,String,200 - 333 kW,Three-phase / Utility,"Utility-scale string inverter",DS_..._SG200HX / SG285HX / SG320HX / SG333HX...pdf,FILENAME
+Inverter,Sungrow,SG 125kW class,String,125 kW,Three-phase / C&I,"Rated AC 125kW; feed-in 3/3-N-PE; multi-MPPT",bfc24cfb-7218-453c-989d-ee6c2bb0e7c2.pdf,READ FROM DATASHEET
+Inverter,Sungrow,SG 150kW class,String,150 kW,Three-phase / Utility,"Rated AC 150kW; 210kWp max PV; 1000Vdc multi-MPPT",a33f2659-00b8-4301-b514-9c3b19937a3d.pdf,READ FROM DATASHEET
+Inverter,Sungrow,SG utility 1500Vdc string,String,Utility class,Three-phase / Utility,"1500Vdc multi-MPPT string; feed-in 3/3",726ad188-2cca-4dde-8673-7e05c65dec80.pdf,READ FROM DATASHEET
+Inverter,Sungrow,C&I Hybrid (250kWp PV class),String Hybrid,250 kWp PV,Three-phase / C&I Hybrid,"Commercial hybrid; 250kWp max PV; 100% 3-phase unbalance output",56037c44-9a2d-47fd-b1a8-6faae8393577.pdf,READ FROM DATASHEET
+Reference,Sungrow,PV Grid-Connected Inverter USER MANUAL,-,-,-,"This is a full product manual, NOT a spec datasheet",d61373e8-3a87-49cf-a42a-dff8a47c5ec4.pdf,IDENTIFIED (manual)
+Inverter,Polycab,Three-phase 50-60kW String,String,50 & 60 kW,Three-phase / C&I,"OCR confirmed: 50kW & 60kW three-phase string inverter (spec-table labels + operation phase confirmed); exact MPPT/voltage/efficiency numbers did not OCR cleanly - read the PDF for those",polycab-solar-three-phase-50kw-60kw-string-inverter-datasheet-india.pdf,PARTIAL (OCR - exact numbers pending)
+Inverter,Generic/Unbranded,Grid-tie 2-6kW / 3ph 5-30kW,String,2 - 30 kW,Single & Three-phase,"UNVERIFIED brand - three generic grid-tie datasheets; confirm brand before quoting",solar-grid-tie-inverter-2kw-6kw.pdf / solar-grid-tie-inverter-3-phase-5kw-30kw.pdf / Solar_Grid-Tie_Inverter.pdf,UNVERIFIED brand

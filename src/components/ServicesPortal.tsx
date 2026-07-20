@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Home, Building2, Sun, Zap, ShieldCheck, ArrowRight, CheckCircle2, 
-  Settings, Award, TrendingUp, Sparkles, AlertCircle, Play, Landmark, 
-  MapPin, HelpCircle, HardDrive, Layout, Scale, Video, Activity,
-  Sliders, Eye, CheckCircle, Database, ChevronRight, BarChart3, Radio, ArrowLeft
+  Settings, Award, Landmark, HelpCircle, Sliders, ChevronRight, ArrowLeft
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -19,11 +17,7 @@ interface ServiceDetail {
   keySpecs: { label: string; value: string }[];
   process: { phase: string; title: string; desc: string }[];
   faqs: { q: string; a: string }[];
-  seoKeywords: string[];
   regionalPolicies: { state: string; rule: string; advantage: string }[];
-  videoTitle: string;
-  videoDuration: string;
-  videoResolution: string;
 }
 
 const SERVICES_DATA: ServiceDetail[] = [
@@ -33,34 +27,30 @@ const SERVICES_DATA: ServiceDetail[] = [
     icon: <Home className="w-6 h-6 text-orange-400" />,
     title: 'Residential Solar Rooftop Solutions',
     badge: 'PM Surya Ghar Yojana Compliant',
-    shortDesc: 'Complete residential rooftop solar solutions featuring sleek glass-on-glass N-Type panels and automated net-metering liasons to wipe out household utility bills entirely.',
+    shortDesc: 'Complete residential rooftop solar solutions featuring Mono PERC and N-Type TOPCon bifacial panels with end-to-end net-metering support to cut down household utility bills.',
     tagline: 'Join India\'s Clean Energy Revolution & Save up to ₹78,000 in Central Subsidies',
-    longDesc: 'Our residential systems are meticulously engineered to maximize roof space. We employ ultra-high efficiency TOPCon Dual-Glass Bifacial modules that generate power from both sides, catching secondary light reflecting from your roof tiles. Our engineers handle everything from LIDAR 3D shadow assessment, structural load analyses, civil foundation casting, to structural DISCOM clearances. This ensures you receive the maximum cash subsidy credited directly to your bank account under the PM Surya Ghar program.',
+    longDesc: 'Our residential systems are engineered to maximise roof space using Mono PERC and high-efficiency N-Type TOPCon bifacial modules (540–620 Wp) that generate power from both sides. Every project begins with a free professional site survey — a manual visit by our engineers to assess roof area, shading and structural readiness. From there we handle structural load analysis, mounting, and DISCOM clearances, ensuring you receive the maximum cash subsidy credited directly to your bank account under the PM Surya Ghar program.',
     keySpecs: [
-      { label: 'Avg Sizing Range', value: '3 kWp to 15 kWp' },
+      { label: 'System Size Range', value: '1 kW to 500 kW' },
       { label: 'Subsidy Support', value: '₹30k/kW (Up to ₹78,000)' },
-      { label: 'ROI Payback Sla', value: '3.1 to 4.2 Years' },
-      { label: 'Warranty Cover', value: '25 Yrs Performance' }
+      { label: 'ROI Payback', value: '3 to 5 Years (CAPEX)' },
+      { label: 'Install Timeline', value: '2 to 4 Weeks' }
     ],
     process: [
-      { phase: '01', title: 'LIDAR Feasibility Map', desc: 'Contactless drone scan evaluates physical roof shapes, tree shadows, and coordinates.' },
+      { phase: '01', title: 'Free Professional Site Survey', desc: 'Our engineers visit your site to assess roof area, shading, and structural readiness — a thorough manual survey at no cost.' },
       { phase: '02', title: 'DISCOM NOC Clearance', desc: 'We submit digital load expansion approvals to your local utility board.' },
-      { phase: '03', title: 'Monocrystalline Mounting', desc: 'Galvanized structure with structural anchoring is securely fixed on your roof.' },
+      { phase: '03', title: 'Structure & Panel Mounting', desc: 'HDGI / anodised-aluminium structure with secure anchoring is fixed on your roof.' },
       { phase: '04', title: 'Net-Meter Sync', desc: 'DISCOM installs bi-directional meter to credit exported excess units.' }
     ],
     faqs: [
       { q: 'Can I run central home air conditioners on residential solar?', a: 'Absolutely! A standard 5 kWp to 8 kWp residential array handles multiple heavy inverter AC units, water pumps, refrigerators, and modular home induction hubs with ease.' },
       { q: 'How long does the subsidy approval take?', a: 'Under the simplified PM Surya Ghar system, our team uploads compliance documents. The cash credit is disbursed within 30 to 45 working days post net-meter commissioning.' }
     ],
-    seoKeywords: ['Surya Ghar solar subsidy Pune', 'residential solar net metering Noida', 'home rooftop solar systems Ahmedabad', 'rooftop solar panel installation cost India'],
     regionalPolicies: [
-      { state: 'Maharashtra (MSEDCL)', rule: 'MERC Net Metering Guidelines 2024', advantage: 'Unused units are carried forward monthly and settled at average power purchase cost in March.' },
-      { state: 'Gujarat (UGVCL/DGVCL)', rule: 'Surya Gujarat Scheme Integration', advantage: 'Fast-tracked net-metering dispatch cycles with central billing offsets completed in 20 days.' },
-      { state: 'Uttar Pradesh (UPPCL)', rule: 'Rooftop Solar Portal 2.0 Policy', advantage: 'Simplified state-level single-window login with immediate structural feasibility clearances.' }
+      { state: 'Gujarat (MGVCL/UGVCL/DGVCL)', rule: 'GERC Net Metering Regulations', advantage: 'Excess solar units are exported to the grid and adjusted against consumption; state top-up subsidy up to ₹20,000.' },
+      { state: 'Uttar Pradesh (UPPCL)', rule: 'UPERC Rooftop Solar Policy', advantage: 'Simplified state-level single-window process with a state subsidy top-up of up to ₹30,000.' },
+      { state: 'Delhi (BSES / Tata-DDL)', rule: 'DERC Net Metering Regulations', advantage: 'Net-metering with a state top-up subsidy of up to ₹15,000 for residential rooftop consumers.' }
     ],
-    videoTitle: 'LiDAR Drone Scanning & Panel Mount Assembly Walkthrough',
-    videoDuration: '4 mins 12 secs',
-    videoResolution: '1080p Full HD'
   },
   {
     id: 'commercial',
@@ -72,10 +62,10 @@ const SERVICES_DATA: ServiceDetail[] = [
     tagline: 'Optimize Corporate OpEx & Lock Symmetrical Zero-Tariff Power for 25 Years',
     longDesc: 'Industrial and commercial assets bear some of the highest power tariffs in India (reaching ₹11.5/unit in some zones). UVR C&I systems provide immediate bottom-line relief. Utilizing either the CAPEX model (immediate asset ownership) or OPEX/RESCO model (zero upfront investment, simply pay cheap tariffs to UVR), we integrate smart multi-MPPT string inverters with safety rapid-shutdown nodes to power central HVAC, machinery motors, and data hubs.',
     keySpecs: [
-      { label: 'Array Capacities', value: '50 kWp to 2,000 kWp+' },
+      { label: 'System Size Range', value: '1 kW to 1.2 MW' },
       { label: 'Tax Incentive', value: '40% Year 1 Depreciation' },
-      { label: 'Tariff Reduction', value: 'Up to 65% Instant Savings' },
-      { label: 'Financial Models', value: 'CAPEX / OPEX (RESCO)' }
+      { label: 'ROI Payback', value: '4 to 6 Years' },
+      { label: 'Financial Models', value: 'CAPEX / RESCO / PPA / OPEX' }
     ],
     process: [
       { phase: '01', title: 'Load Profile Logging', desc: 'We capture active machinery startup transients and peak power factors.' },
@@ -84,32 +74,28 @@ const SERVICES_DATA: ServiceDetail[] = [
       { phase: '04', title: 'SCADA Remote Telemetry', desc: 'Live cloud dashboards monitor real-time string diagnostics and offsets.' }
     ],
     faqs: [
-      { q: 'What is the RESCO / OPEX solar model?', a: 'Under RESCO, UVR installs, owns, and maintains the solar system on your roof at no cost to you. You simply purchase the generated electricity at a guaranteed cheap rate (e.g., ₹4.5/unit) for 15-25 years.' },
-      { q: 'Does commercial solar qualify for tax benefits?', a: 'Yes! Commercial users can utilize the 40% Accelerated Depreciation tax shield, writing off a massive portion of the asset value in Year 1 to reduce corporate tax liabilities.' }
+      { q: 'What is the RESCO / OPEX / PPA solar model?', a: 'Under RESCO/PPA, UVR installs, owns, and maintains the solar system on your roof. You simply purchase the generated electricity at an agreed tariff — RESCO rates start from around ₹4.50/unit and vary by state and system size. CAPEX (you own the asset) and OPEX models are also offered.' },
+      { q: 'Does commercial solar qualify for tax benefits?', a: 'Yes. Commercial users can utilise the 40% Accelerated Depreciation tax shield, writing off a significant portion of the asset value in Year 1 to reduce corporate tax liabilities.' }
     ],
-    seoKeywords: ['Industrial solar installer India', 'commercial solar EPC Pune', 'RESCO model factory solar Noida', 'Accelerated Depreciation solar benefit India'],
     regionalPolicies: [
-      { state: 'Maharashtra (MSEDCL)', rule: 'Industrial Feed-in Tariff & Open Access', advantage: 'Allows offset of high industrial tariffs using behind-the-meter custom synchronization systems.' },
       { state: 'Gujarat (GEDA)', rule: 'Gujarat Solar Policy 2021 (C&I Section)', advantage: 'Zero electricity duty on solar power consumption for industrial units up to contracted load capacity.' },
-      { state: 'NCR Region', rule: 'HARYANA & UP C&I Net Metering Laws', advantage: 'Virtual net metering allowed for corporate offices with decentralized warehouse assets.' }
+      { state: 'Uttar Pradesh (UPPCL)', rule: 'UPERC C&I Net Metering Regulations', advantage: 'Net metering and open access available for commercial and industrial consumers under UPERC norms.' },
+      { state: 'NCR Region', rule: 'Haryana & UP C&I Net Metering Laws', advantage: 'Virtual net metering allowed for corporate offices with decentralized warehouse assets.' }
     ],
-    videoTitle: 'SCADA Telemetry System & Active Peak Shaving Case Study',
-    videoDuration: '6 mins 45 secs',
-    videoResolution: '4K Ultra HD'
   },
   {
     id: 'ground_mounted',
     route: 'services/ground-mounted-solar',
     icon: <Sun className="w-6 h-6 text-emerald-400" />,
     title: 'Ground-Mounted Solar Power Plants',
-    badge: 'Turnkey IPP & Open Access Models',
-    shortDesc: 'Engineered for developers, government organizations, and private investors. Utilizing automated mechanical trackers and advanced high-density soil anchoring.',
+    badge: 'Turnkey EPC & Open Access Models',
+    shortDesc: 'Engineered for developers, institutions, and private investors. Utilizing structural soil anchoring and, where suitable, single-axis tracking for large open-ground arrays.',
     tagline: 'High-Volume Energy Harvesting via Custom Engineered Open Ground Arrays',
     longDesc: 'Ground-mounted installations require sophisticated civil engineering and topographical analysis. From contour mapping, pull-out testing for concrete pile foundations, to solar tracking engineering, UVR provides a unified turnkey solution. We implement open-access models allowing heavy power users to set up solar farms in remote rural regions and wheel the generated electricity over the state DISCOM grid directly to their urban assets.',
     keySpecs: [
-      { label: 'Minimum Scaling', value: '500 kWp to 50 MWp+' },
+      { label: 'System Size Range', value: '100 kW to 10 MW+' },
+      { label: 'ROI Payback', value: '5 to 7 Years' },
       { label: 'Foundation Tech', value: 'Rammed Pile / Cast Concrete' },
-      { label: 'Tracking Options', value: 'Single-Axis Active Tracking' },
       { label: 'Grid Feed-in', value: '11kV / 33kV Substation Sync' }
     ],
     process: [
@@ -120,32 +106,28 @@ const SERVICES_DATA: ServiceDetail[] = [
     ],
     faqs: [
       { q: 'What is solar open-access wheeling?', a: 'Open-access allows large energy consumers to purchase solar power generated at a distant ground-mounted facility, using state transmission lines to feed power to their urban factories.' },
-      { q: 'Are your ground mounting structures corrosion proof?', a: 'We exclusively use Hot-Dip Galvanized Iron (HDGI) or anodized structural aluminum with a zinc coating thickness exceeding 80 microns, guaranteeing zero rust for 30 years.' }
+      { q: 'Are your ground mounting structures corrosion resistant?', a: 'We use Hot-Dip Galvanized Iron (HDGI) or anodised structural aluminium for long-term corrosion resistance, backed by a 5-year structure warranty.' }
     ],
-    seoKeywords: ['Ground mounted solar plant developers', 'solar open access MW scale', 'solar farm EPC India', 'open access solar Maharashtra wheeling charges'],
     regionalPolicies: [
-      { state: 'Maharashtra', rule: 'MERC Open Access Regulations 2024', advantage: 'Favorable cross-subsidy surcharge waivers for green power developers setting up solar farms in Vidarbha.' },
+      { state: 'Gujarat', rule: 'GERC Open Access Regulations', advantage: 'Cross-subsidy surcharge and wheeling framework for green-power developers setting up solar farms in Gujarat.' },
       { state: 'Karnataka', rule: 'KERC Green Energy Open Access Policy', advantage: 'Zero wheeling charges for developers wheeling energy within the same state distribution zone.' },
-      { state: 'Rajasthan', rule: 'RVUNL Grid Synchronization Portal', advantage: 'Fast-tracked land acquisition pathways with custom grid allocation codes in Jodhpur and Barmer.' }
+      { state: 'Rajasthan', rule: 'RERC Grid Synchronization Norms', advantage: 'Fast-tracked land pathways with custom grid allocation in the Jodhpur and Barmer solar zones.' }
     ],
-    videoTitle: 'Single-Axis Tracker Calibration & High-Pressure Piling Operations',
-    videoDuration: '8 mins 15 secs',
-    videoResolution: '1080p Full HD'
   },
   {
     id: 'utility_scale',
     route: 'services/utility-scale-solar',
     icon: <Zap className="w-6 h-6 text-purple-400" />,
-    title: 'Utility-Scale Solar EPC',
-    badge: 'MW-Scale Substations & O&M',
-    shortDesc: 'Comprehensive EPC contracting for massive MW-scale national grid arrays. Includes substation setups, high-voltage transmission lines, and automated diagnostic SCADA centers.',
-    tagline: 'Unified National Grid Syncing with Grade-A High Voltage Transmission Systems',
-    longDesc: 'At the utility scale, minor engineering efficiencies dictate millions in annual returns. UVR Green Energies coordinates massive multi-megawatt projects with clinical execution. Our scope encompasses grid feasibility calculations, substation construction (up to 132kV), string-level IoT analytics, and high-frequency inverter duty transformer syncing. We combine advanced hardware with proactive Operation & Maintenance (O&M) programs featuring robotic, waterless cleaning systems.',
+    title: 'Large Ground-Mounted & EPC (up to 10 MW+)',
+    badge: 'Large-Scale EPC & O&M',
+    shortDesc: 'Turnkey EPC contracting for large ground-mounted solar arrays up to 10 MW and beyond. Includes substation setups, high-voltage lines, and diagnostic monitoring — delivered as EPC services, not standalone utility ownership.',
+    tagline: 'Large-Scale Solar EPC Execution with Grid Integration and O&M',
+    longDesc: 'For large ground-mounted and EPC projects up to 10 MW and beyond, UVR Green Energies delivers turnkey execution as a solar EPC partner. Our scope covers grid feasibility, substation construction (up to 132kV), string-level monitoring, and inverter/transformer integration, complemented by proactive Operation & Maintenance (O&M) programs. UVR delivers these as EPC services and does not operate standalone utility-scale power plants.',
     keySpecs: [
-      { label: 'Execution Scope', value: 'Complete Turnkey EPC' },
+      { label: 'Execution Scope', value: 'Turnkey EPC (up to 10 MW+)' },
       { label: 'Substation Spec', value: '11kV / 33kV / 132kV Setups' },
-      { label: 'Module Density', value: '650Wp+ TOPCon Bifacial' },
-      { label: 'Active Support', value: '24/7 SCADA Telemetry Control' }
+      { label: 'Module Type', value: '540–620 Wp TOPCon Bifacial' },
+      { label: 'Active Support', value: 'Monitoring & O&M Support' }
     ],
     process: [
       { phase: '01', title: 'Grid Connectivity NOC', desc: 'Acquiring absolute grid feed clearances from State Transmission Utilities.' },
@@ -154,18 +136,14 @@ const SERVICES_DATA: ServiceDetail[] = [
       { phase: '04', title: 'Automation Center', desc: 'Robotic cleaning integration and string-level fault-finding SCADA deployment.' }
     ],
     faqs: [
-      { q: 'What O&M protocols are followed for MW plants?', a: 'We deploy localized maintenance squads, aerial thermal drone scans to identify micro-cracks or hot spots, and waterless robotic cleaners that clean arrays nightly with zero scratch risk.' },
+      { q: 'What O&M protocols are followed for large plants?', a: 'We deploy localised maintenance teams, thermal inspection to identify micro-cracks or hot spots, and scheduled module cleaning with preventive maintenance to sustain plant performance.' },
       { q: 'How is reactive power compensation handled?', a: 'Our systems use advanced central smart inverters coupled with dynamic shunt capacitor banks to maintain power factors close to unity, preventing utility fines.' }
     ],
-    seoKeywords: ['Utility scale solar EPC India', 'MW solar project contractor', 'solar substation liaisoning', 'waterless robotic solar panel cleaning'],
     regionalPolicies: [
       { state: 'Central Govt (CERC)', rule: 'National Grid Connectivity Regulations', advantage: 'Inter-State Transmission System (ISTS) charge waiver for projects commissioned before Dec 2025.' },
       { state: 'SEC / NTPC', rule: 'National Clean Energy PPA Tenders', advantage: 'Standardized sovereign contracts providing 25-year risk-free energy purchase backing.' },
       { state: 'State-wide Grids', rule: 'Dynamic ABT (Availability Based Tariff)', advantage: 'Real-time frequency balancing software synchronizes output values automatically to avoid penalties.' }
     ],
-    videoTitle: '132kV Substation Commissioning & Robotic Waterless Cleaning Systems',
-    videoDuration: '9 mins 50 secs',
-    videoResolution: '4K Ultra HD'
   }
 ];
 
@@ -174,8 +152,7 @@ interface ServicesPortalProps {
 }
 
 export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
-  const [activeTab, setActiveTab] = useState<'overview' | 'engineering' | 'policy' | 'interactive'>('overview');
-  const [isDemoPlaying, setIsDemoPlaying] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<'overview' | 'engineering' | 'policy'>('overview');
 
   // Micro-calculator state
   const [residentialKw, setResidentialKw] = useState<number>(5);
@@ -193,41 +170,7 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
     setActiveTab('overview');
   }, [activeSubPage]);
 
-  // Telemetry logs generator based on the active service
-  const getTelemetryLog = (id: string) => {
-    switch (id) {
-      case 'residential':
-        return [
-          { time: '13:30:12', msg: 'Drone 3D LiDAR feed synchronized at Pune HQ', type: 'info' },
-          { time: '13:30:15', msg: 'Roof clearance boundary mapped: 840 sq ft', type: 'success' },
-          { time: '13:30:19', msg: 'Calculated annual solar irradiance index: 1,842 kWh/m²', type: 'info' },
-          { time: '13:30:22', msg: 'Surya Ghar subsidy approval pipeline initialized', type: 'success' },
-        ];
-      case 'commercial':
-        return [
-          { time: '13:30:12', msg: 'SCADA Node 18 active at GIDC Engineering Wing', type: 'info' },
-          { time: '13:30:16', msg: 'Factory load profile analyzed: peak transients at 450A', type: 'info' },
-          { time: '13:30:20', msg: 'Year 1 Accelerated Depreciation calculations validated', type: 'success' },
-          { time: '13:30:24', msg: 'Inverter harmonic distortion reading: 1.8% (OK)', type: 'success' },
-        ];
-      case 'ground_mounted':
-        return [
-          { time: '13:30:12', msg: 'Soil compaction pull-out test complete at site B7', type: 'success' },
-          { time: '13:30:17', msg: 'Single-axis tracker tracking angle adjusted: +34.2°', type: 'info' },
-          { time: '13:30:21', msg: 'Hydrological runoff model computed (100-year rain SLA)', type: 'success' },
-          { time: '13:30:25', msg: 'Grid wheeling loss index calibrated at 2.45%', type: 'info' },
-        ];
-      default:
-        return [
-          { time: '13:30:12', msg: 'Substation 132kV SF6 circuit breaker pressure: 5.2 bar', type: 'success' },
-          { time: '13:30:16', msg: 'Robotic cleaning array 4 initiated: waterless mode', type: 'info' },
-          { time: '13:30:21', msg: 'Central SCADA system syncing 35,000 panel segments', type: 'info' },
-          { time: '13:30:26', msg: 'Dynamic frequency response within tolerance (+/- 0.02 Hz)', type: 'success' },
-        ];
-    }
-  };
-
-  // If no specific sub-route is requested, display the majestic, SEO-rich Services directory landing
+  // If no specific sub-route is requested, display the Services directory landing
   if (!matchedService) {
     return (
       <div className="space-y-12 text-left">
@@ -245,7 +188,7 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
               <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">Professional Services</span>
             </h1>
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-              UVR Green Energies provides end-to-end feasibility, grid integration, structural engineering, and regulatory clearance across residential, industrial, ground-mounted, and utility power distribution scales. Click any service to enter its standalone dedicated page.
+              UVR Green Energies provides end-to-end feasibility, grid integration, structural engineering, and regulatory clearance across residential, commercial and industrial, and large ground-mounted / EPC scales. Click any service to enter its standalone dedicated page.
             </p>
           </div>
         </div>
@@ -289,16 +232,12 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-900/60 flex items-center justify-between">
-                {/* SEO Rich keywords tag line inside card */}
-                <span className="text-[9px] font-mono text-slate-600 truncate max-w-[180px]">
-                  SEO: {srv.seoKeywords[0]}
-                </span>
+              <div className="pt-4 border-t border-slate-900/60 flex items-center justify-end">
                 <button 
                   onClick={() => { window.location.hash = `#${srv.route}`; }}
-                  className="px-4 py-2 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold flex items-center gap-1.5 group-hover:bg-orange-500 group-hover:text-slate-950 transition-all duration-300"
+                  className="btn-primary px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
                 >
-                  Enter Subpage <ArrowRight className="w-3.5 h-3.5" />
+                  Explore service <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
 
@@ -317,10 +256,10 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
           </div>
           <div className="space-y-1.5 border-t md:border-t-0 md:border-l border-slate-900 pt-4 md:pt-0 md:pl-6">
             <span className="text-xs font-bold text-white flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> MNRE ALMM Grade-A
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> MNRE ALMM Listed Modules
             </span>
             <p className="text-[11px] text-slate-500">
-              Only using top-ranked Tier 1 modules listed on the Government's Approved List of Models and Manufacturers.
+              We use modules listed on the Government's Approved List of Models and Manufacturers (ALMM List-II).
             </p>
           </div>
           <div className="space-y-1.5 border-t md:border-t-0 md:border-l border-slate-900 pt-4 md:pt-0 md:pl-6">
@@ -337,9 +276,7 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
     );
   }
 
-  // --- STANDALONE TOTALLY DIFFERENT SUBPAGE VIEW ---
-  const activeLogFeed = getTelemetryLog(matchedService.id);
-
+  // --- STANDALONE SUBPAGE VIEW ---
   return (
     <div className="space-y-8 text-left">
       
@@ -351,9 +288,6 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
         >
           <ArrowLeft className="w-4 h-4 text-orange-400 shrink-0" /> Back to Services
         </button>
-        <span className="hidden sm:inline text-[10px] font-mono text-slate-500 bg-slate-950 border border-slate-900 px-3 py-1 rounded-md truncate max-w-xs">
-          ROUTE: /{matchedService.route}
-        </span>
       </div>
 
       {/* Standalone Subpage SEO Landing Hero */}
@@ -389,7 +323,6 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                 { id: 'overview' as const, label: '01. Overview', short: 'Overview' },
                 { id: 'engineering' as const, label: '02. Engineering', short: 'Engineering' },
                 { id: 'policy' as const, label: '03. Policies', short: 'Policies' },
-                { id: 'interactive' as const, label: '04. Video Feed', short: 'Video' },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -470,7 +403,7 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3">
                         <div className="bg-slate-950 border border-slate-850 p-3.5 rounded-xl">
                           <span className="text-[8px] text-slate-500 font-mono block">ESTIMATED SYSTEM COST</span>
-                          <span className="text-sm font-black text-white font-mono block mt-1">₹{(residentialKw * 65000).toLocaleString('en-IN')}</span>
+                          <span className="text-sm font-black text-white font-mono block mt-1">₹{(residentialKw * 54750).toLocaleString('en-IN')}</span>
                         </div>
                         <div className="bg-slate-950 border border-slate-850 p-3.5 rounded-xl">
                           <span className="text-[8px] text-emerald-400 font-mono block">GOVERNMENT CASH SUBSIDY</span>
@@ -481,13 +414,13 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                         <div className="bg-slate-950 border border-slate-850 p-3.5 rounded-xl">
                           <span className="text-[8px] text-orange-400 font-mono block">YOUR NET EFFECTIVE OUTLAY</span>
                           <span className="text-sm font-black text-orange-400 font-mono block mt-1">
-                            ₹{((residentialKw * 65000) - (residentialKw <= 2 ? residentialKw * 30000 : (residentialKw === 3 ? 78000 : 78000))).toLocaleString('en-IN')}
+                            ₹{((residentialKw * 54750) - (residentialKw <= 2 ? residentialKw * 30000 : (residentialKw === 3 ? 78000 : 78000))).toLocaleString('en-IN')}
                           </span>
                         </div>
                       </div>
 
                       <p className="text-[10px] text-slate-500 leading-normal bg-slate-950 p-3 rounded-lg border border-slate-900">
-                        *Calculated using standardized Pune domestic utility pricing index (₹65,000 per kW). The PM Surya Ghar subsidy provides ₹30,000 per kW for up to 2kW, and ₹18,000 for the 3rd kW.
+                        *Indicative cost using an approximate ₹54,750 per kW residential benchmark (varies by brand and site; resets periodically). The PM Surya Ghar subsidy provides ₹30,000 per kW for up to 2kW, and ₹18,000 for the 3rd kW (capped at ₹78,000).
                       </p>
                     </div>
                   )}
@@ -748,7 +681,7 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                         </div>
                         <h5 className="text-xs font-bold text-white mt-2">Bi-Directional Net-Meter Clearance</h5>
                         <p className="text-[11px] text-slate-400 leading-relaxed">
-                          We manage the entire liasion workflow with state DISCOMs (MSEDCL, UGVCL, UPPCL, etc.). Includes the application, test report filings, and the ultimate bi-directional net-meter swapping.
+                          We manage the entire liaison workflow with state DISCOMs (MGVCL, UGVCL, DGVCL, PGVCL, UPPCL, etc.). Includes the application, test report filings, and the ultimate bi-directional net-meter swapping.
                         </p>
                       </div>
                     </div>
@@ -757,13 +690,13 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
 
                   {/* Step phase tracker */}
                   <div className="space-y-3">
-                    <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest font-mono">Our Operational Lifecycle</h4>
+                    <h4 className="text-sm font-bold text-white">Our process</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                       {matchedService.process.map((step, idx) => (
-                        <div key={idx} className="bg-slate-900/50 border border-slate-900 p-4 rounded-xl relative space-y-2">
-                          <span className="absolute top-3 right-3 text-2xl font-black font-mono text-slate-800/80 leading-none select-none">{step.phase}</span>
-                          <h5 className="text-xs font-bold text-slate-200 relative z-10">{step.title}</h5>
-                          <p className="text-[10px] text-slate-500 leading-relaxed relative z-10">{step.desc}</p>
+                        <div key={idx} className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl space-y-2">
+                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold font-mono">{step.phase}</span>
+                          <h5 className="text-sm font-bold text-slate-100 leading-snug pr-0">{step.title}</h5>
+                          <p className="text-[11px] text-slate-400 leading-relaxed">{step.desc}</p>
                         </div>
                       ))}
                     </div>
@@ -771,12 +704,12 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                 </div>
               )}
 
-              {/* TAB 3: REGIONAL POLICIES & HIGH-VOLTAGE SEO CONTENT */}
+              {/* TAB 3: REGIONAL POLICIES */}
               {activeTab === 'policy' && (
                 <div className="space-y-6">
                   <div className="space-y-2">
                     <h3 className="text-lg font-bold text-white font-sans flex items-center gap-2">
-                      <Landmark className="w-5 h-5 text-orange-400" /> Regional Subsidy Frameworks &amp; SEO Guides
+                      <Landmark className="w-5 h-5 text-orange-400" /> Regional Subsidy Frameworks
                     </h3>
                     <p className="text-xs text-slate-400">
                       Understand localized policies, net-meter rules, and direct state-level advantages to maximize return rates.
@@ -796,133 +729,16 @@ export default function ServicesPortal({ activeSubPage }: ServicesPortalProps) {
                     ))}
                   </div>
 
-                  {/* Informational SEO text content */}
+                  {/* Informational text content */}
                   <div className="bg-slate-900/50 p-5 rounded-2xl border border-slate-900 text-xs text-slate-300 space-y-3 leading-relaxed">
                     <span className="font-bold text-white text-sm block">Accredited Net-Meter Optimization &amp; Yield Calculations</span>
                     <p className="text-slate-400 text-[11px] leading-relaxed">
-                      By analyzing regional solar indices (such as Pune's average 5.2 peak sun hours per day), our systems are calibrated specifically to align with DISCOM billing buckets. Under the MERC (Maharashtra Electricity Regulatory Commission) and CERC guidelines, installing modern high-yield N-Type solar cell modules guarantees up to 15% more power over the standard 25-year performance SLA, allowing users to achieve complete self-sustainability quickly.
+                      By analyzing regional solar indices (such as Gujarat's strong average peak sun hours), our systems are calibrated to align with DISCOM billing buckets. Under GERC (Gujarat Electricity Regulatory Commission) and CERC guidelines, installing modern high-yield N-Type TOPCon bifacial modules delivers strong long-term generation over the 30-year performance warranty, helping users approach energy self-sufficiency.
                     </p>
                     <p className="text-slate-400 text-[11px] leading-relaxed">
-                      For industrial players under C&amp;I structures, our engineering models leverage the corporate accelerated depreciation guidelines (Section 32 of Income Tax Act), providing immediate capital expenditure offsets that speed up the internal payback cycles from 5 years to less than 3.5 years.
+                      For industrial players under C&amp;I structures, our engineering models leverage the corporate accelerated depreciation guidelines (Section 32 of Income Tax Act), providing capital expenditure offsets that bring the internal payback cycle to roughly 4 to 6 years.
                     </p>
                   </div>
-
-                  {/* SEO Metadata indexing visualization */}
-                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-slate-900 text-[9px] font-mono text-slate-600">
-                    <span>SEO INDEX TAGS:</span>
-                    {matchedService.seoKeywords.map((tag, idx) => (
-                      <span key={idx} className="bg-slate-900 px-2 py-0.5 rounded border border-slate-850 uppercase text-[8px]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* TAB 4: MOCK VIDEO WALKTHROUGH & ACTIVE SCADA PANEL */}
-              {activeTab === 'interactive' && (
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold text-white font-sans flex items-center gap-2">
-                      <Video className="w-5 h-5 text-orange-400" /> Live Installation Drone Footage &amp; Telemetry
-                    </h3>
-                    <p className="text-xs text-slate-400">
-                      Watch our automated engineering squads in action. From contactless 3D LiDAR drone scanning to substation synchronizations.
-                    </p>
-                  </div>
-
-                  {/* Interactive Video Player Mockup with running coordinates and telemetry overlays */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-                    
-                    {/* Visual Player (8 Cols) */}
-                    <div className="md:col-span-8 bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden relative min-h-[220px] flex flex-col justify-between">
-                      {/* Grid lines to make it look technical */}
-                      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(30,41,59,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(30,41,59,0.2)_1px,transparent_1px)] bg-[size:25px_25px]" />
-                      
-                      {/* Interactive Scan Line Effect */}
-                      {isDemoPlaying && (
-                        <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500/50 shadow-[0_0_10px_#10b981] animate-bounce" />
-                      )}
-
-                      {/* Video Player Header Overlay */}
-                      <div className="relative z-10 p-4 flex justify-between items-center bg-gradient-to-b from-slate-950/80 to-transparent image-scrim-soft on-image-text">
-                        <div className="flex items-center gap-2">
-                          <Radio className="w-3.5 h-3.5 text-red-500 animate-pulse" />
-                          <span className="text-[10px] font-mono text-white uppercase tracking-wider">{matchedService.videoTitle}</span>
-                        </div>
-                        <span className="text-[9px] font-mono bg-slate-950 px-2 py-0.5 border border-slate-800 text-slate-400 rounded">
-                          {matchedService.videoResolution}
-                        </span>
-                      </div>
-
-                      {/* Video Central Play Button or Animated Graphic */}
-                      <div className="relative z-10 flex flex-col items-center justify-center py-10">
-                        {isDemoPlaying ? (
-                          <div className="space-y-3 text-center">
-                            <div className="w-16 h-16 rounded-full border border-emerald-500/30 flex items-center justify-center mx-auto relative">
-                              <div className="absolute inset-0 rounded-full border border-emerald-500/60 animate-ping" />
-                              <Eye className="w-6 h-6 text-emerald-400" />
-                            </div>
-                            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block animate-pulse">Scanning Active Field...</span>
-                          </div>
-                        ) : (
-                          <button 
-                            onClick={() => setIsDemoPlaying(true)}
-                            className="w-14 h-14 rounded-full bg-orange-500 text-slate-950 flex items-center justify-center hover:scale-105 transition-all shadow-xl shadow-orange-500/20"
-                          >
-                            <Play className="w-6 h-6 fill-slate-950 pl-0.5" />
-                          </button>
-                        )}
-                      </div>
-
-                      {/* Video Player Bottom Controls Overlay */}
-                      <div className="relative z-10 p-4 bg-gradient-to-t from-slate-950/90 to-transparent image-scrim-soft on-image-text flex justify-between items-center text-[10px] font-mono text-slate-400">
-                        <button
-                          onClick={() => setIsDemoPlaying(!isDemoPlaying)}
-                          className="px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 hover:text-white"
-                        >
-                          {isDemoPlaying ? 'Pause Video' : 'Stream Live Footage'}
-                        </button>
-                        <span>Time remaining: {matchedService.videoDuration}</span>
-                      </div>
-                    </div>
-
-                    {/* Telemetry Logs Panel (4 Cols) */}
-                    <div className="md:col-span-4 bg-slate-900/40 border border-slate-850 p-4.5 rounded-2xl flex flex-col justify-between">
-                      <div className="space-y-3.5">
-                        <div className="flex items-center gap-1.5 border-b border-slate-800/80 pb-2.5">
-                          <Activity className="w-4 h-4 text-emerald-400" />
-                          <span className="text-[10px] font-bold text-slate-300 uppercase tracking-wider font-mono">SCADA Log Feed</span>
-                        </div>
-
-                        {/* Running logs list */}
-                        <div className="space-y-2 max-h-[140px] overflow-y-auto pr-1">
-                          {activeLogFeed.map((log, idx) => (
-                            <div key={idx} className="text-[9px] font-mono border-b border-slate-950/20 pb-1.5 leading-normal">
-                              <span className="text-slate-500 mr-1.5">[{log.time}]</span>
-                              <span className={log.type === 'success' ? 'text-emerald-400' : 'text-slate-300'}>
-                                {log.msg}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Active system details */}
-                      <div className="bg-slate-950 p-3 rounded-xl border border-slate-850/80 space-y-1.5">
-                        <div className="flex justify-between items-center text-[9px] font-mono">
-                          <span className="text-slate-500">Node Status:</span>
-                          <span className="text-emerald-400 font-bold uppercase">Online &amp; Sync</span>
-                        </div>
-                        <div className="flex justify-between items-center text-[9px] font-mono">
-                          <span className="text-slate-500">Latency Link:</span>
-                          <span className="text-slate-300 font-bold">14.2 ms</span>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
                 </div>
               )}
 

@@ -22,7 +22,7 @@ const ECOSYSTEM_NODES: InfoNode[] = [
       'Peak Cell Efficiency: 22.8%+',
       'Output Power Tolerance: 0 ~ +5W',
       'Dual-glass encapsulation for extreme humidity resistance',
-      '25-Year Performance Warranty (87.4% retention)',
+      '12-Year Product + 30-Year Performance Warranty',
     ],
     role: 'Converts solar photons into High-Voltage Direct Current (DC) electricity.',
     savingTips: 'Periodic cleaning with water removes dust build-ups and fully maintains peak photon transmission.',
@@ -45,15 +45,15 @@ const ECOSYSTEM_NODES: InfoNode[] = [
     id: 'meter',
     title: 'Bi-Directional Net Meter',
     subtitle: 'The Grid Accounting Ledger',
-    description: 'A DISCOM-approved high-precision smart meter that measures both the power you import from the utility grid and the surplus green energy you feed back in. Your utility bill is calculated purely as: [Units Imported] minus [Units Exported]!',
+    description: 'A DISCOM-approved bi-directional smart meter records both the power you import from the grid and the surplus solar energy you export back to it. Under net metering, the exported units are adjusted against the units you consume, reducing your monthly bill. Net metering is governed by your state DISCOM (in Gujarat, GERC).',
     techSpecs: [
       'Class 1.0 Accuracy Standard',
       'Tamper-proof optical sealing',
       'Bi-directional totalizers (KWh & KVARh)',
       'Certified and approved across major DISCOMs in India',
     ],
-    role: 'Tracks net billing units, allowing your utility bill to drop all the way to zero!',
-    savingTips: 'With solar, any surplus daytime generation is exported, storing financial credits to offset your evening consumption.',
+    role: 'Measures import and export so exported solar is adjusted against your consumption on the monthly DISCOM bill.',
+    savingTips: 'Surplus daytime generation is exported and adjusted against your consumption, lowering your monthly electricity bill.',
   },
   {
     id: 'home',
@@ -70,32 +70,18 @@ const ECOSYSTEM_NODES: InfoNode[] = [
     savingTips: 'Running energy-intensive appliances (heavy washing machines, pumps) during peak solar hours (10 AM - 2 PM) maximizes direct solar consumption.',
   },
   {
-    id: 'battery',
-    title: 'LiFePO4 Solar Smart Battery Vault',
-    subtitle: 'The Independence Buffer',
-    description: 'UVR Lithium Iron Phosphate (LiFePO4) solar batteries store excess afternoon power. This allows you to power your home during evening peak grid rates or maintain uninterrupted electricity during utility outages.',
-    techSpecs: [
-      'Chemistry: Safe, thermal-stable LiFePO4',
-      'Cycle Life: 6000+ Cycles (90% Depth of Discharge)',
-      'Integrated Smart BMS (Battery Management System)',
-      'Modular expandable capacity (5kWh to 30kWh)',
-    ],
-    role: 'Stores excess daytime solar power for self-consumption during evenings and grid blackout periods.',
-    savingTips: 'Configure your battery buffer to maintain 20% backup charge for grid blackout defense, and cycle the rest for maximum daily savings.',
-  },
-  {
     id: 'grid',
     title: 'DISCOM Utility Power Grid',
     subtitle: 'The Endless Energy Battery',
-    description: 'Your local utility power grid acts as a massive financial battery. Net metering rules allow you to feed excess solar power to the grid during the day and take back power during rainy days or nights.',
+    description: 'Your local DISCOM grid acts as a virtual battery. Under net metering, you export excess solar during the day and draw power at night or on cloudy days, with exports adjusted against imports on your bill.',
     techSpecs: [
       'Stabilized 50Hz grid alignment',
       'Zero backup fuel/diesel needed on-site',
-      'Earn feed-in tariff credits under state solar laws',
+      'Bill adjustment via state net-metering regulations (e.g. GERC in Gujarat)',
       'Bi-directional grid stability handshake',
     ],
-    role: 'Provides seamless backup electricity when solar is dark or battery banks are discharged.',
-    savingTips: 'Locking in net-metering approvals early secures your high feed-in credit tariff before utility cap allotments fill up.',
+    role: 'Supplies electricity when solar generation is low, at night, or during cloudy weather — no on-site battery required.',
+    savingTips: 'Completing net-metering approval early lets you start exporting surplus solar and reducing your bills sooner.',
   },
 ];
 
@@ -216,7 +202,7 @@ export default function EducationalHub() {
                 >
                   <Settings className={`w-6 h-6 ${activeTab === 'day' ? 'text-sky-400' : 'text-blue-500'}`} />
                 </button>
-                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">4. Home Load</span>
+                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">3. Home Load</span>
                 <span className="text-[8px] bg-blue-500/15 text-blue-400 font-bold px-1.5 py-0.5 rounded-full mt-1">Powered</span>
               </div>
 
@@ -232,7 +218,7 @@ export default function EducationalHub() {
                 >
                   <div className="font-mono text-xs font-black">KW/h</div>
                 </button>
-                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">3. Net Meter</span>
+                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">4. Net Meter</span>
                 {activeTab === 'day' ? (
                   <span className="text-[8px] bg-emerald-500/15 text-emerald-400 font-bold px-1.5 py-0.5 rounded-full mt-1">Exporting (-)</span>
                 ) : (
@@ -240,30 +226,7 @@ export default function EducationalHub() {
                 )}
               </div>
 
-              {/* 5. SMART BATTERY (Bottom Center) */}
-              <div className="flex flex-col items-center z-10 mt-4">
-                <button
-                  onClick={() => setSelectedNodeId('battery')}
-                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center border-2 transition-all ${
-                    selectedNodeId === 'battery'
-                      ? 'bg-teal-500/10 border-teal-500 text-teal-400 scale-110 shadow-lg shadow-teal-500/10'
-                      : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
-                  <div className={`w-6 h-3 border-2 border-teal-400 rounded-sm relative flex items-center p-0.5 ${activeTab === 'day' ? 'text-teal-400' : 'text-teal-400 animate-pulse'}`}>
-                    <div className="h-full bg-teal-400 rounded-xs" style={{ width: activeTab === 'day' ? '85%' : '45%' }} />
-                    <div className="absolute right-[-4px] top-[2px] w-1 h-1.5 bg-teal-400 rounded-r-xs" />
-                  </div>
-                </button>
-                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">5. Battery</span>
-                {activeTab === 'day' ? (
-                  <span className="text-[8px] bg-emerald-500/15 text-emerald-400 font-bold px-1.5 py-0.5 rounded-full mt-1">Charging</span>
-                ) : (
-                  <span className="text-[8px] bg-teal-500/15 text-teal-400 font-bold px-1.5 py-0.5 rounded-full mt-1">Discharging</span>
-                )}
-              </div>
-
-              {/* 6. POWER GRID (Bottom Right) */}
+              {/* 5. POWER GRID (Bottom Right) */}
               <div className="flex flex-col items-center z-10 mt-4">
                 <button
                   onClick={() => setSelectedNodeId('grid')}
@@ -275,7 +238,7 @@ export default function EducationalHub() {
                 >
                   <span className="font-mono text-xs font-extrabold text-blue-400">DISCOM</span>
                 </button>
-                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">6. Power Grid</span>
+                <span className="text-[9px] sm:text-[10px] font-mono mt-2 uppercase tracking-wider block text-slate-300 leading-tight">5. Power Grid</span>
                 <span className="text-[8px] bg-slate-800 text-slate-500 font-bold px-1.5 py-0.5 rounded-full mt-1">Backup</span>
               </div>
 
@@ -299,9 +262,9 @@ export default function EducationalHub() {
               )}
             </h4>
             <p className="text-[11px] text-slate-400 leading-relaxed font-sans">
-              {activeTab === 'day' 
-                ? 'Solar panels capture high-voltage DC photons. The inverter converts it into usable AC. Your home loads consume it first, excess power charges your smart lithium vault, and any leftover energy spins your net meter backward for credits.'
-                : 'Solar panels go dark. Your home automatically and instantly pulls clean energy stored in your lithium batteries first. If batteries reach safety limit reserves, the DISCOM utility grid kicks in seamlessly to power appliances.'
+              {activeTab === 'day'
+                ? 'Solar panels capture DC power from sunlight. The inverter converts it into usable AC. Your home loads consume it first, and any surplus is exported to the DISCOM grid through your net meter and adjusted against your consumption to reduce your monthly bill.'
+                : 'Solar panels stop generating after dark. Your home draws power from the DISCOM grid, offset by the net-metering credits earned from surplus solar exported during the day. Battery backup is available on request via hybrid systems.'
               }
             </p>
           </div>

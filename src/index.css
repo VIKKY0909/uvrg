@@ -395,6 +395,48 @@ html.light .on-image-badge {
   color: #ffffff !important;
 }
 
+/* Spec cards overlaid on hero photos — keep dark glass in light mode */
+html.light .on-image-panel,
+html.light .on-image-text .on-image-panel,
+html.light .on-image-text [class*="bg-slate-950/"],
+html.light .on-image-text [class*="bg-slate-900/"] {
+  background-color: rgba(2, 6, 23, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+html.light .on-image-panel .text-white,
+html.light .on-image-panel .text-slate-100,
+html.light .on-image-panel .text-slate-200,
+html.light .on-image-panel .text-slate-300 {
+  color: #ffffff !important;
+}
+
+html.light .on-image-panel .text-slate-400,
+html.light .on-image-panel .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.light .on-image-panel .text-cyan-400 {
+  color: #67e8f9 !important;
+}
+
+html.light .on-image-panel .text-emerald-400 {
+  color: #6ee7b7 !important;
+}
+
+/* Solid premium CTAs stay high-contrast in light mode */
+html.light .btn-primary {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+html.light .btn-primary:hover {
+  background-color: #c2410c !important;
+  color: #ffffff !important;
+}
+
 html.light .on-image-badge.text-emerald-400 {
   color: #6ee7b7 !important;
 }

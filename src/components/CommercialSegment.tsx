@@ -2,37 +2,35 @@ import React, { useState } from 'react';
 import { Building2, Landmark, ShieldCheck, Scale, Award, ArrowRight, TrendingUp, CheckCircle2, Percent, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 
-interface CaseStudy {
+// NOTE: Commercial & industrial case studies are under construction — founder-verified
+// figures are not yet available, so no client names, savings, or payback numbers are shown.
+// The two entries below are the only real, founder-verified projects to date (both residential),
+// referenced here purely as recent installation highlights with accurate capacity/generation only.
+interface ProjectHighlight {
   clientName: string;
   location: string;
   capacity: string;
-  investment: string;
-  payback: string;
-  annualSavings: string;
-  co2Offset: string;
+  annualGeneration: string;
+  segment: string;
   description: string;
 }
 
-const COMMERCIAL_CASES: CaseStudy[] = [
+const RECENT_PROJECTS: ProjectHighlight[] = [
   {
-    clientName: 'Techsol IT Park Block A',
-    location: 'Hinjewadi, Pune',
-    capacity: '150 kWp Grid-Tied System',
-    investment: '₹ 82,50,000',
-    payback: '3.4 Years',
-    annualSavings: '₹ 24,15,000',
-    co2Offset: '123 Tons/Yr',
-    description: 'A massive high-load engineering center installation featuring 278 TOPCon Dual-Glass panels. Utilizes net-metering to offset central chiller conditioning loads, reducing daytime grid dependence from ₹11.5/unit to zero.'
+    clientName: 'Milan Bharatkumar Vora',
+    location: 'Anand, Gujarat',
+    capacity: '5.53 kWp',
+    annualGeneration: '~8,361 kWh/yr',
+    segment: 'Residential',
+    description: 'A 5.53 kWp residential rooftop system using premium Adani Elan Shine TOPCon modules and a Solaryaan inverter, generating around 8,361 kWh annually for reliable clean energy and lower bills.'
   },
   {
-    clientName: 'Greenfield Cooperative Housing Society',
-    location: 'Sector 45, Noida',
-    capacity: '85 kWp Symmetrical Array',
-    investment: '₹ 49,30,000',
-    payback: '4.1 Years',
-    annualSavings: '₹ 11,90,000',
-    co2Offset: '70 Tons/Yr',
-    description: 'Shared rooftop deployment serving 120 residential apartments. Powers water pumping stations, elevators, street lighting, and clubhouse HVAC systems. Obtained ₹9,00,000 flat central capital subsidy under the cooperative apartment scheme.'
+    clientName: 'Shri Sujal Pareshbhai Shah',
+    location: 'Vadodara, Gujarat',
+    capacity: '25 kWp',
+    annualGeneration: '~37,800 kWh/yr',
+    segment: 'Residential',
+    description: 'A 25 kWp rooftop system in Vadodara built with Adani Elan Shine TOPCon modules and a Solaryaan inverter, generating around 37,800 kWh annually — lowering bills and cutting carbon.'
   }
 ];
 
@@ -40,10 +38,10 @@ export default function CommercialSegment() {
   const [loadKw, setLoadKw] = useState<number>(50);
   const [taxRate, setTaxRate] = useState<number>(25); // corporate tax percentage
 
-  // 1kW commercial solar averages ₹55,000, generates 120 units/mo. Tariffs for commercial average ₹9.8/unit in India.
+  // 1kW commercial solar averages ~₹55,000 and generates ~126 units/mo. Commercial tariff assumed ₹9/unit.
   const setupCost = loadKw * 55000;
-  const yearlyGen = loadKw * 120 * 12;
-  const annualSavings = yearlyGen * 9.8;
+  const yearlyGen = loadKw * 126 * 12;
+  const annualSavings = yearlyGen * 9;
   
   // 40% Accelerated Depreciation tax shield:
   // First year tax write off = 40% of setup cost. Tax savings = write-off * taxRate%
@@ -161,7 +159,7 @@ export default function CommercialSegment() {
             <div className="bg-slate-900 p-4 rounded-xl border border-slate-850">
               <span className="text-[10px] text-blue-400 font-mono block">PROJECTED ROI AMORTIZATION</span>
               <span className="text-xl font-bold text-blue-400 font-mono block mt-1">~{commercialPayback} Years</span>
-              <span className="text-[9px] text-slate-500 mt-1 block">Calculated at flat commercial power of ₹9.8/kWh.</span>
+              <span className="text-[9px] text-slate-500 mt-1 block">Calculated at an indicative commercial tariff of ₹9/kWh.</span>
             </div>
           </div>
 
@@ -186,9 +184,9 @@ export default function CommercialSegment() {
                 <TrendingUp className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-slate-200">OPEX / RESCO Pricing Models</h4>
+                <h4 className="text-xs font-bold text-slate-200">CAPEX / RESCO / PPA / OPEX Models</h4>
                 <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
-                  Avoid capital investments completely. Under the RESCO model, UVR owns and operates the solar infrastructure. You simply buy clean power from your roof at a flat tariff starting at **₹4.5/unit** — up to 50% cheaper than the DISCOM commercial tariff!
+                  Choose the model that fits your balance sheet. Under RESCO/PPA, UVR owns and operates the solar infrastructure and you simply buy clean power from your roof — RESCO tariffs start from around **₹4.50/unit** and vary by state and system size. Financing partners include ECOFY, Bajaj, SOLFIN, FIBE, AEREM, SIDBI and nationalised banks.
                 </p>
               </div>
             </div>
@@ -199,9 +197,9 @@ export default function CommercialSegment() {
                 <Users className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-slate-200">Housing Cooperative Flat Subsidies</h4>
+                <h4 className="text-xs font-bold text-slate-200">Group Housing / RWA Subsidies</h4>
                 <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
-                  Apartment housing complexes can offset heavy common loads (elevators, swimming pool filtration, boundary grid lights). Eligible for flat central subsidies of **₹18,000 per kW** up to a maximum cap of **₹9 Lakhs**.
+                  Group housing societies and RWAs can offset heavy common loads (elevators, water pumps, common-area lighting). Eligible for central subsidy of **₹18,000 per kW up to 500 kW** (at 3 kW per house) under PM Surya Ghar.
                 </p>
               </div>
             </div>
@@ -234,10 +232,19 @@ export default function CommercialSegment() {
 
       {/* Case Studies section */}
       <div className="space-y-6">
-        <h3 className="text-xl font-bold text-white tracking-tight text-left">Enterprise Case Studies</h3>
-        
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-left">
+          <h3 className="text-xl font-bold text-white tracking-tight">Recent Installations</h3>
+          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider bg-slate-900/60 border border-slate-850 px-2.5 py-1 rounded-md w-fit">
+            Commercial &amp; industrial case studies coming soon
+          </span>
+        </div>
+
+        <p className="text-xs text-slate-400 leading-relaxed text-left max-w-3xl">
+          Detailed commercial and industrial case studies are being documented and will be published soon. In the meantime, here are recent UVR residential installations in Gujarat with verified capacity and generation figures.
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-          {COMMERCIAL_CASES.map((c, idx) => (
+          {RECENT_PROJECTS.map((c, idx) => (
             <div key={idx} className="bg-slate-950 border border-slate-850 rounded-2xl p-6 flex flex-col justify-between space-y-4">
               <div className="space-y-2">
                 <div className="flex justify-between items-start gap-4">
@@ -252,18 +259,14 @@ export default function CommercialSegment() {
                 <p className="text-xs text-slate-400 leading-relaxed">{c.description}</p>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-slate-900 text-center font-mono">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-4 border-t border-slate-900 text-center font-mono">
                 <div>
-                  <span className="text-[9px] text-slate-500 block">CAPEX COST</span>
-                  <span className="text-xs font-bold text-slate-200 mt-0.5 block">{c.investment}</span>
+                  <span className="text-[9px] text-slate-500 block">SEGMENT</span>
+                  <span className="text-xs font-bold text-slate-200 mt-0.5 block">{c.segment}</span>
                 </div>
                 <div>
-                  <span className="text-[9px] text-emerald-400 block">ANNUAL SAVINGS</span>
-                  <span className="text-xs font-bold text-emerald-400 mt-0.5 block">{c.annualSavings}</span>
-                </div>
-                <div>
-                  <span className="text-[9px] text-blue-400 block">PAYBACK TIMELINE</span>
-                  <span className="text-xs font-bold text-blue-400 mt-0.5 block">{c.payback}</span>
+                  <span className="text-[9px] text-emerald-400 block">ANNUAL GENERATION</span>
+                  <span className="text-xs font-bold text-emerald-400 mt-0.5 block">{c.annualGeneration}</span>
                 </div>
               </div>
             </div>

@@ -41,15 +41,15 @@ export default function SavingsProjectorChart({
   const projectionData = useMemo(() => {
     const data = [];
     let cumulativeSavings = 0;
-    const baseGeneration = capacityKw * 120 * 12; // 1kW = 120 units/mo * 12 mos = 1440 units/yr
+    const baseGeneration = capacityKw * 126 * 12; // 1kW = 126 units/mo * 12 mos = 1512 units/yr
 
     for (let year = 1; year <= 25; year++) {
       // 0.5% yearly performance degradation of panels
       const degradationFactor = Math.pow(1 - 0.005, year - 1);
       const yearGeneration = baseGeneration * degradationFactor;
 
-      // 4% yearly DISCOM electricity tariff price escalation
-      const tariffEscalation = Math.pow(1.04, year - 1);
+      // 5% yearly DISCOM electricity tariff price escalation (residential)
+      const tariffEscalation = Math.pow(1.05, year - 1);
       const yearSavings = initialAnnualSavings * tariffEscalation * degradationFactor;
       cumulativeSavings += yearSavings;
 

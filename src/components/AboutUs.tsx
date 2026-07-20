@@ -1,39 +1,42 @@
 import React from 'react';
 import { 
-  Shield, Award, Users, HardDrive, Target, CheckCircle, 
-  MapPin, Phone, Mail, Building, Landmark, Zap, Sparkles 
+  Shield, Award, Users, Target, 
+  MapPin, Phone, Mail, Building, Landmark, Sparkles 
 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 export default function AboutUs() {
   const values = [
     {
       icon: <Shield className="w-5 h-5 text-orange-400" />,
-      title: 'Structural Safety First',
-      desc: 'All rooftop structures undergo meticulous 3D finite element wind load analyses to resist category-4 cyclone forces.'
+      title: 'Reliable Execution',
+      desc: 'As an MNRE-approved Solar EPC partner, we deliver engineered, safety-first rooftop and ground-mounted systems built for long-term performance.'
     },
     {
       icon: <Users className="w-5 h-5 text-emerald-400" />,
-      title: 'Pune Local Engineers',
-      desc: 'Local Pune-based certified engineering specialists ensure fast, same-day site surveys and grid synchronizations.'
+      title: 'Gujarat-Based Team',
+      desc: 'Our Vadodara-based certified engineering and projects teams provide free professional site surveys and dependable on-ground execution across Gujarat and beyond.'
     },
     {
       icon: <Target className="w-5 h-5 text-blue-400" />,
-      title: 'Grade-A Sourcing',
-      desc: 'We exclusively select ALMM approved Tier-1 TOPCon cells, smart microinverters, and heavy hot-dip galvanized mounting structures.'
+      title: 'Quality Sourcing',
+      desc: 'We use ALMM List-II approved modules, Mono PERC & N-Type TOPCon bifacial panels, and hot-dip galvanized / anodised aluminium mounting structures.'
     }
   ];
 
+  // Role-only leadership cards. Founder-verified personal names were not provided,
+  // so no individual names or photos are shown here (do not fabricate).
   const team = [
     {
-      name: 'Er. Rajesh K. Sharma',
-      role: 'Chief EPC Director',
-      background: 'Ex-MSEDCL Grid Planning Officer with 18+ years of grid synchronization & utility substation design expertise.'
+      role: 'Founder & CEO',
+      background: 'Leads the vision and overall strategy of UVR Green Energies, driving the company’s mission to make clean solar energy accessible and reliable.'
     },
     {
-      name: 'Dr. Vivek S. Gokhale',
-      role: 'Solar Design Architect',
-      background: 'PhD in Photovoltaics from IIT Bombay. Leads structural simulation profiles and 3D shadow ray tracing algorithms.'
+      role: 'Head — Engineering & Design',
+      background: 'Oversees system design, module and inverter selection, and technical quality across residential, C&I and ground-mounted projects.'
+    },
+    {
+      role: 'Head — Projects',
+      background: 'Manages end-to-end project execution — site surveys, installation, net-metering coordination and after-sales support.'
     }
   ];
 
@@ -58,25 +61,25 @@ export default function AboutUs() {
               <span className="bg-gradient-to-r from-orange-400 to-emerald-400 bg-clip-text text-transparent">Green Energies</span>
             </h2>
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-              Founded on the pillars of absolute transparency and state-of-the-art structural safety, UVR Green Energies has quickly become Pune’s premier residential and industrial turnkey solar EPC. 
+              UVR Green Energies is a trusted, MNRE-approved Solar EPC company based in Vadodara, Gujarat. Founded on 28 July 2023, we deliver innovative, efficient and sustainable energy solutions for residential, commercial, industrial and ground-mounted projects.
             </p>
             <p className="text-slate-400 text-xs md:text-sm leading-relaxed">
-              We specialize in custom elevated racking systems that maximize bifacial albedo gain and integrate with utility-scale central SCADA monitoring hubs. We streamline the entire governmental PM Surya Ghar subsidies process to deliver hassle-free zero-electricity bills.
+              By combining advanced technology, engineering expertise and reliable execution, we empower our clients to reduce electricity costs while contributing to a cleaner, greener future. We provide end-to-end subsidy documentation support through the PM Surya Ghar: Muft Bijli Yojana. Powered by UVR TECHSOL Pvt. Ltd.
             </p>
 
             {/* Corporate Quick Statistics */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800/80">
               <div className="text-center sm:text-left">
-                <span className="text-xl sm:text-2xl md:text-3xl font-black text-orange-400 font-mono block">15 MW+</span>
-                <span className="text-[10px] text-slate-500 font-mono uppercase">Grid-Synced Capacity</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-black text-orange-400 font-mono block">7 MW+</span>
+                <span className="text-[10px] text-slate-500 font-mono uppercase">Installed Capacity</span>
               </div>
               <div className="text-center sm:text-left">
-                <span className="text-xl sm:text-2xl md:text-3xl font-black text-emerald-400 font-mono block">2,400+</span>
-                <span className="text-[10px] text-slate-500 font-mono uppercase">Residential Rooftops</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-black text-emerald-400 font-mono block">1200+</span>
+                <span className="text-[10px] text-slate-500 font-mono uppercase">Installations</span>
               </div>
               <div className="text-center sm:text-left">
-                <span className="text-xl sm:text-2xl md:text-3xl font-black text-blue-400 font-mono block">100%</span>
-                <span className="text-[10px] text-slate-500 font-mono uppercase">Subsidy Approval rate</span>
+                <span className="text-xl sm:text-2xl md:text-3xl font-black text-blue-400 font-mono block">1.05 Cr+</span>
+                <span className="text-[10px] text-slate-500 font-mono uppercase">Units / Year</span>
               </div>
             </div>
           </div>
@@ -86,8 +89,8 @@ export default function AboutUs() {
             <div className="flex items-center gap-2 border-b border-slate-900 pb-3">
               <Building className="w-5 h-5 text-orange-400" />
               <div>
-                <h4 className="text-sm font-bold text-white">Central Operations Center</h4>
-                <span className="text-[9px] text-slate-500 font-mono block">PUNE, MH, INDIA</span>
+                <h4 className="text-sm font-bold text-white">Head Office</h4>
+                <span className="text-[9px] text-slate-500 font-mono block">VADODARA, GUJARAT, INDIA</span>
               </div>
             </div>
 
@@ -96,14 +99,14 @@ export default function AboutUs() {
                 <MapPin className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <span>
                   <strong>HQ Address:</strong> <br />
-                  UVR Plaza, Sector-18, Shivajinagar, Pune, Maharashtra 411005
+                  423, Vihav Trade Center, B/s Waves Clube, Vasna–Bhayli Canal Road, Bhayli, Vadodara, Gujarat 391410
                 </span>
               </div>
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong>Liaison Support:</strong> <br />
-                  +91 (020) 4920-4411 / +91 98230-55110
+                  <strong>Phone:</strong> <br />
+                  +91 95375 66799 / +91 97373 66799
                 </span>
               </div>
               <div className="flex items-start gap-2.5">
@@ -118,7 +121,7 @@ export default function AboutUs() {
             <div className="bg-slate-900 p-3 rounded-xl border border-slate-850 text-[10px] text-slate-500 leading-normal flex gap-2">
               <Landmark className="w-4 h-4 text-slate-400 flex-shrink-0" />
               <span>
-                <strong>Certified Registrar:</strong> Registered as Grade-A solar developer under MEDA (Maharashtra Energy Development Agency).
+                <strong>Legal Entity:</strong> UVR TECHSOL PRIVATE LIMITED · CIN U35105GJ2023PTC143414 · GSTIN 24AADCU3820C1ZV. MNRE empanelled; registered with GEDA (Gujarat Energy Development Agency).
               </span>
             </div>
           </div>
@@ -130,9 +133,9 @@ export default function AboutUs() {
       <div className="space-y-6">
         <div className="text-center max-w-xl mx-auto space-y-2">
           <span className="text-orange-400 text-xs font-mono font-bold uppercase tracking-widest">Our Engineering DNA</span>
-          <h3 className="text-2xl font-black text-white font-sans">Core Architectural Principles</h3>
+          <h3 className="text-2xl font-black text-white font-sans">Core Principles</h3>
           <p className="text-slate-400 text-xs leading-relaxed">
-            We don't cut corners. UVR uses standard high-durability zinc coatings, certified DC SPD surge fuses, and premium thermal breakers.
+            We don't cut corners. UVR is certified to ISO 9001:2015, ISO 14001:2015 and ISO 45001:2018, uses ALMM List-II modules, and holds Electrical Contractor and Supervisor Licences.
           </p>
         </div>
 
@@ -151,33 +154,57 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* Executive Team Spotlight */}
+      {/* Leadership — role cards only until founder provides named headshots */}
       <div className="space-y-6">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <span className="text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">Engineering Leadership</span>
-          <h3 className="text-2xl font-black text-white font-sans">Executive Officers</h3>
-          <p className="text-slate-400 text-xs leading-relaxed">
-            Spearheaded by accredited grid experts who interface with local utilities to make your rooftop solar journey stress-free.
+          <span className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">How we deliver</span>
+          <h3 className="text-2xl font-black text-white font-sans">Leadership roles</h3>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Dedicated ownership across strategy, engineering and on-site execution — so your project stays clear from survey to commissioning.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {team.map((member, i) => (
-            <div key={i} className="bg-gradient-to-br from-slate-900/40 to-slate-950/60 border border-slate-850 p-6 rounded-2xl flex flex-col justify-between">
-              <div className="space-y-2">
-                <span className="text-[10px] text-orange-400 font-mono uppercase tracking-wider block font-bold">{member.role}</span>
-                <h4 className="text-base font-black text-white font-sans">{member.name}</h4>
-                <p className="text-slate-400 text-xs leading-relaxed pt-2">
-                  {member.background}
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-900/80 flex justify-between items-center text-[10px] text-slate-500 font-mono">
-                <span>LICENSED PROFESSIONAL</span>
-                <span className="text-emerald-400">ID: UVR-{100 + i * 24}</span>
-              </div>
+            <div key={i} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-6 flex flex-col gap-3">
+              <span className="text-[11px] text-orange-400 font-semibold uppercase tracking-wider">UVR Green Energies</span>
+              <h4 className="text-base font-bold text-white font-sans">{member.role}</h4>
+              <p className="text-slate-400 text-sm leading-relaxed">{member.background}</p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Certifications & Awards */}
+      <div className="space-y-6">
+        <div className="text-center max-w-xl mx-auto space-y-2">
+          <span className="text-orange-400 text-xs font-mono font-bold uppercase tracking-widest">Recognition</span>
+          <h3 className="text-2xl font-black text-white font-sans">Certifications & Awards</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="bg-slate-950/40 border border-slate-900 p-6 rounded-2xl space-y-3.5">
+            <div className="p-3 bg-slate-900 rounded-xl w-fit border border-slate-800">
+              <Shield className="w-5 h-5 text-emerald-400" />
+            </div>
+            <h4 className="text-sm font-bold text-white font-sans">Certifications & Registrations</h4>
+            <ul className="text-slate-400 text-xs leading-relaxed space-y-1.5 list-disc pl-4">
+              <li>ISO 9001:2015, ISO 14001:2015 & ISO 45001:2018</li>
+              <li>MNRE empanelled Solar EPC · ALMM List-II modules</li>
+              <li>GEDA registered (C&I) · PM Surya Ghar National Portal (Residential/RWA/GHS)</li>
+              <li>Electrical Contractor & Supervisor Licences</li>
+            </ul>
+          </div>
+          <div className="bg-slate-950/40 border border-slate-900 p-6 rounded-2xl space-y-3.5">
+            <div className="p-3 bg-slate-900 rounded-xl w-fit border border-slate-800">
+              <Award className="w-5 h-5 text-orange-400" />
+            </div>
+            <h4 className="text-sm font-bold text-white font-sans">Awards</h4>
+            <ul className="text-slate-400 text-xs leading-relaxed space-y-1.5 list-disc pl-4">
+              <li>Mirchi Business Class Awards — Excellence in Solar Rooftop Services</li>
+              <li>TIME Icons of Vadodara 2025 — Excellence in Solar Rooftop Services</li>
+            </ul>
+          </div>
         </div>
       </div>
 

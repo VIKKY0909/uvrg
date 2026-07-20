@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, ShieldCheck, HelpCircle, Calendar, Clock, Star, Circle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Import our beautiful photorealistic drone survey asset
-import uvrDroneSurvey from '../assets/images/uvr_drone_survey_1782761249090.jpg';
+// Site-survey visual (professional on-site roof assessment)
+import uvrSiteSurvey from '../assets/images/uvr_drone_survey_1782761249090.jpg';
 
 interface BranchOffice {
   city: string;
@@ -11,29 +11,53 @@ interface BranchOffice {
   address: string;
   phone: string;
   email: string;
+  mapUrl?: string;
 }
 
+// Head Office (Vadodara) + real branch network — founder-verified (FACTS §3)
 const BRANCH_OFFICES: BranchOffice[] = [
   {
-    city: 'Pune (Corporate HQ)',
-    role: 'Turnkey EPC & Engineering Head office',
-    address: 'UVR TECHSOL Pvt. Ltd., 3rd Floor, Shreenath Plaza, Dnyaneshwar Paduka Chowk, FC Road, Pune, MH - 411005',
-    phone: '+91 20 6718 9900',
-    email: 'projects@uvrtechsol.com'
+    city: 'Vadodara (Head Office)',
+    role: 'Registered Office · Turnkey EPC & Engineering',
+    address: '423, Vihav Trade Center, B/s Waves Clube, Vasna–Bhayli Canal Road, Bhayli, Vadodara, Gujarat – 391410',
+    phone: '+91 95375 66799',
+    email: 'info@uvrgreenenergies.com',
+    mapUrl: 'https://maps.app.goo.gl/Lkd9TPZJzVYYF1bm7'
   },
   {
-    city: 'Ahmedabad (State Liaison)',
-    role: 'Gujarat Discom & Subsidy Approvals Office',
-    address: 'GIDC Industrial Park, Phase II, SG Highway, Ahmedabad, GJ - 380054',
-    phone: '+91 79 4012 8822',
-    email: 'gujarat@uvrtechsol.com'
+    city: 'Kosamba Branch',
+    role: 'Surat Region Operations',
+    address: '1st Floor, Near Mahavir Society, At-Po: Tarsadi, Village: Tarsadi, Taluka: Mangrol, Dist: Surat, Gujarat – 394120',
+    phone: '+91 97141 66799',
+    email: 'epc@uvrgreenenergies.com'
   },
   {
-    city: 'Noida (North Operations)',
-    role: 'UP Net Metering & Field Logistics Hub',
-    address: 'Galaxy Business Tower, Sector 62, Noida, UP - 201301',
-    phone: '+91 120 449 1100',
-    email: 'noida@uvrtechsol.com'
+    city: 'Nadiad Branch',
+    role: 'Kheda Region Operations',
+    address: 'F-20, Rudraksh-1 Complex, Adinar Chokdi, Nadiad–Dakor Road, Village: Alindra, Taluka: Nadiad, Dist: Kheda, Gujarat',
+    phone: '+91 97141 46799',
+    email: 'epc@uvrgreenenergies.com'
+  },
+  {
+    city: 'Noida Branch',
+    role: 'North India (UP) Operations',
+    address: 'T3A-301, NX One, Plot No. 17, Sector Techzone-4, Greater Noida (West), UP – 201306',
+    phone: '+91 97148 66799',
+    email: 'epc@uvrgreenenergies.com'
+  },
+  {
+    city: 'Halol Branch',
+    role: 'Panchmahal Region Operations',
+    address: 'Address coming soon',
+    phone: '+91 95375 66799',
+    email: 'epc@uvrgreenenergies.com'
+  },
+  {
+    city: 'Indore Branch',
+    role: 'Madhya Pradesh Operations',
+    address: 'Address coming soon',
+    phone: '+91 97141 26799',
+    email: 'epc@uvrgreenenergies.com'
   }
 ];
 
@@ -74,7 +98,7 @@ export default function ContactPortal() {
             <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">Solar Freedom</span>
           </h2>
           <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-            Ready to completely wipe out your electricity bills? Secure your spot for a comprehensive **high-precision LIDAR drone roof inspection and shadow profile assessment** today.
+            Ready to cut down your electricity bills? Book your slot for a comprehensive free professional on-site survey — our engineers assess your roof, shading and load to size the ideal system.
           </p>
         </div>
       </div>
@@ -86,10 +110,10 @@ export default function ContactPortal() {
         <div className="lg:col-span-7 bg-slate-950/60 border border-slate-850 p-6 md:p-8 rounded-2xl text-left">
           <div className="flex items-center gap-2.5 mb-2">
             <Calendar className="w-5 h-5 text-orange-400" />
-            <h3 className="text-lg font-bold text-white font-sans">Request Precision Drone LIDAR Survey</h3>
+            <h3 className="text-lg font-bold text-white font-sans">Request Your Free Site Survey</h3>
           </div>
           <p className="text-xs text-slate-400 mb-6">
-            Fill in the parameters below. Our operations team will secure permissions and coordinate a certified pilot to map your roof shadow profile with zero physical contact.
+            Fill in the details below. Our operations team will coordinate a convenient time and send a qualified engineer to survey your roof, shading and electrical load.
           </p>
 
           <AnimatePresence mode="wait">
@@ -106,7 +130,7 @@ export default function ContactPortal() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Rajesh Kumar"
+                      placeholder="e.g. Amit Patel"
                       value={formData.name}
                       onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
                       className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-orange-500 transition-colors"
@@ -146,10 +170,10 @@ export default function ContactPortal() {
                       onChange={e => setFormData(prev => ({ ...prev, roofType: e.target.value }))}
                       className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500 transition-colors"
                     >
-                      <option value="Flat RCC Concrete">Flat RCC Concrete Terrace</option>
-                      <option value="Sloped Industrial Metal Sheet">Sloped Industrial Metal Sheet</option>
-                      <option value="Residential Slanted Shingles">Residential Slanted Shingles</option>
-                      <option value="Cooperative Open Space Complex">Cooperative Open Space Complex</option>
+                      <option value="Flat RCC Concrete">Flat RCC Concrete</option>
+                      <option value="Metal Sheet Roof">Metal Sheet Roof</option>
+                      <option value="Tiled Roof">Tiled Roof</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
@@ -229,43 +253,43 @@ export default function ContactPortal() {
                 <div className="space-y-1.5">
                   <h4 className="text-base font-bold text-white">Survey Request Acknowledged!</h4>
                   <p className="text-xs text-emerald-400/90 leading-relaxed max-w-lg mx-auto">
-                    Excellent, <strong>{formData.name}</strong>! We have locked your high-precision LIDAR Drone Survey booking slot for <strong>{formData.preferredDate} ({formData.preferredTime})</strong> at your address: <em>{formData.address}</em>.
+                    Excellent, <strong>{formData.name}</strong>! We have locked your free site survey booking slot for <strong>{formData.preferredDate} ({formData.preferredTime})</strong> at your address: <em>{formData.address}</em>.
                   </p>
                 </div>
                 <div className="bg-slate-900 p-4 rounded-xl border border-slate-850 text-[11px] text-slate-400 leading-normal text-left space-y-1.5 max-w-md mx-auto">
                   <span className="font-bold text-slate-200 block">Next Steps Checklist:</span>
-                  <span className="block">● A certified remote pilot will contact you to confirm satellite parameters.</span>
-                  <span className="block">● No physical roof climbing required — our mapping drones audit structural slopes and vegetation shading remotely within 25 minutes.</span>
-                  <span className="block">● Sizing blueprint and DISCOM feasibility report will be delivered inside 24 hours.</span>
+                  <span className="block">● Our survey engineer will call you to confirm the appointment details.</span>
+                  <span className="block">● The on-site visit assesses roof structure, orientation, shading and your electrical load — typically completed within 30–45 minutes.</span>
+                  <span className="block">● Sizing proposal and DISCOM feasibility guidance will be shared within 24 hours.</span>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
-        {/* Right Info Panel with drone image (5 Cols) */}
+        {/* Right Info Panel with survey image (5 Cols) */}
         <div className="lg:col-span-5 space-y-6 text-left">
-          
-          {/* Drone Image Card */}
+
+          {/* Site Survey Image Card */}
           <div className="bg-slate-950 border border-slate-850 rounded-2xl overflow-hidden shadow-lg">
             <div className="relative aspect-[16/10] bg-slate-900">
               <img
-                src={uvrDroneSurvey}
-                alt="LIDAR Drone Survey"
+                src={uvrSiteSurvey}
+                alt="UVR engineer conducting an on-site rooftop solar survey"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-800 rounded-lg px-2 py-1 text-[9px] font-mono text-emerald-400 flex items-center gap-1 on-image-badge">
-                <Circle className="w-1.5 h-1.5 fill-emerald-400 animate-pulse" /> Pilot Active
+                <Circle className="w-1.5 h-1.5 fill-emerald-400 animate-pulse" /> Free Survey
               </div>
             </div>
-            
+
             <div className="p-5 space-y-2">
               <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
-                <Star className="w-4 h-4 text-orange-400 fill-orange-400" /> LIDAR Shading Audit Technology
+                <Star className="w-4 h-4 text-orange-400 fill-orange-400" /> Professional Shadow &amp; Site Analysis
               </h4>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                Ordinary site visits miss minor surrounding tree or chimney heights, creating generation losses over 25 years. UVR employs hexacopters equipped with laser telemetry to generate an absolute 3D digital duplicate of your rooftop layout.
+                A quick, careful on-site survey captures roof orientation, tilt, nearby tree and chimney shading, and your sanctioned load — so your system is sized accurately for maximum generation over its 25+ year life.
               </p>
             </div>
           </div>
@@ -273,19 +297,38 @@ export default function ContactPortal() {
           {/* Quick Contacts */}
           <div className="bg-slate-950/40 border border-slate-850 p-6 rounded-2xl space-y-4">
             <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest">Active Channels</h4>
-            
+
             <div className="space-y-3 text-xs">
-              <div className="flex items-center gap-3 text-slate-400">
-                <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span>+91 20 6718 9900 (Mon - Sat, 9 AM - 6 PM)</span>
+              <div className="flex items-start gap-3 text-slate-400">
+                <Phone className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                <span className="flex flex-col gap-0.5">
+                  <a href="tel:+919537566799" className="hover:text-orange-400">+91 95375 66799</a>
+                  <a href="tel:+919737366799" className="hover:text-orange-400">+91 97373 66799</a>
+                </span>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
-                <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span>info@uvrtechsol.com</span>
+                <Send className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <a href="https://wa.me/919537566799" target="_blank" rel="noreferrer" className="hover:text-emerald-400">
+                  WhatsApp: +91 95375 66799
+                </a>
+              </div>
+              <div className="flex items-start gap-3 text-slate-400">
+                <Mail className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                <span className="flex flex-col gap-0.5">
+                  <a href="mailto:info@uvrgreenenergies.com" className="hover:text-orange-400">info@uvrgreenenergies.com</a>
+                  <a href="mailto:epc@uvrgreenenergies.com" className="hover:text-orange-400">epc@uvrgreenenergies.com (Sales)</a>
+                  <a href="mailto:healthcheck@uvrgreenenergies.com" className="hover:text-orange-400">healthcheck@uvrgreenenergies.com (Service)</a>
+                </span>
+              </div>
+              <div className="flex items-start gap-3 text-slate-400">
+                <MapPin className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                <a href="https://maps.app.goo.gl/Lkd9TPZJzVYYF1bm7" target="_blank" rel="noreferrer" className="hover:text-orange-400">
+                  423, Vihav Trade Center, Bhayli, Vadodara, Gujarat – 391410
+                </a>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
-                <MapPin className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span>Pune, Ahmedabad, Noida, Bengaluru</span>
+                <Clock className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                <span>Mon – Sat, 9:30 AM – 6:30 PM</span>
               </div>
             </div>
           </div>
@@ -316,6 +359,12 @@ export default function ContactPortal() {
                   <span>EMAIL:</span>
                   <a href={`mailto:${b.email}`} className="text-slate-300 hover:text-orange-400 break-all">{b.email}</a>
                 </div>
+                {b.mapUrl && (
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-0.5">
+                    <span>MAP:</span>
+                    <a href={b.mapUrl} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-orange-400 break-all">View on Google Maps</a>
+                  </div>
+                )}
               </div>
             </div>
           ))}

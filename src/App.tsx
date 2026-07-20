@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Sun, Moon, Shield, ShieldCheck, BadgeCheck, Phone, Mail, MapPin, 
   ChevronDown, MessageSquare, Zap, Leaf, Award, Compass, 
-  HelpCircle, Eye, Star, Sparkles, Building2, UserCheck, Play,
+  HelpCircle, Eye, Sparkles, Building2, UserCheck,
   Menu, X, Landmark, TrendingUp, Info
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -22,54 +22,30 @@ import uvrBifacialPanels from './assets/images/uvr_bifacial_panels_1782761204892
 import uvrSmartInverter from './assets/images/uvr_smart_inverter_1782761219437.jpg';
 import uvrBatteryVault from './assets/images/uvr_battery_vault_1782761234130.jpg';
 
-// 1. DYNAMIC TESTIMONIALS & FAQS
-const TESTIMONIALS = [
-  {
-    name: "Dr. Arvind Kulkarni",
-    location: "Pune, Maharashtra",
-    systemSize: "5.4 kW System",
-    quote: "My monthly DISCOM bill went from ₹6,800 to just ₹320! The UVR net-metering approval was handled entirely by their team, and the physical installation is incredibly robust. Best decision for my retirement villa.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120&h=120",
-  },
-  {
-    name: "Meera Singhal",
-    location: "Ahmedabad, Gujarat",
-    systemSize: "3.2 kW System",
-    quote: "The 3D LIDAR drone survey they conducted on my roof was fascinating. It showed exactly how to avoid my water tank shadow. PM Surya Ghar subsidy of ₹60,000 was credited directly to my bank account within 35 days.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120&h=120",
-  },
-  {
-    name: "Vikas & Ritu Sharma",
-    location: "Noida, Uttar Pradesh",
-    systemSize: "8.1 kW Hybrid",
-    quote: "With the frequent power cuts in Noida, the smart LiFePO4 battery vault is a lifesaver. We run our heavy inverter ACs through the night entirely on solar backup. The team at UVR Techsol Pvt. Ltd. is deeply professional.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=120&h=120",
-  },
-];
-
 const FAQS = [
   {
     question: "How does the PM Surya Ghar Muft Bijli Yojana subsidy system work?",
-    answer: "Launched by the Central Government, this scheme provides a direct capital subsidy for residential rooftop solar. You get ₹30,000 for 1kW, ₹60,000 for 2kW, and a maximum flat subsidy of ₹78,000 for any system size of 3kW to 10kW. Commercial or industrial customers do not receive direct cash subsidies but gain a 40% Accelerated Depreciation tax benefit.",
+    answer: "The PM Surya Ghar: Muft Bijli Yojana provides Central Financial Assistance for eligible residential rooftop solar. The amount depends on installed capacity and MNRE guidelines (₹30,000 for the first kW, ₹60,000 at 2 kW, and a maximum of ₹78,000 for systems of 3 kW and above). UVR Green Energies manages the full process — application, documentation, installation and subsidy support.",
   },
   {
     question: "What is net metering and how does it reduce my bill?",
-    answer: "Net metering is a billing arrangement with your local DISCOM utility. When your solar panels generate more electricity than your home consumes during the day, the excess is sent back into the utility grid, spinning your smart net-meter backward and earning unit credits. At night, you draw units back. Your monthly bill is calculated purely as: Net Units = [Units Imported] - [Units Exported].",
+    answer: "Net metering lets the excess electricity your solar system generates be exported to the DISCOM grid and adjusted against what you consume, reducing your monthly bill. It is governed by your state DISCOM's regulations.",
   },
   {
     question: "How long does the entire solar installation and approval timeline take?",
-    answer: "Typically 3 to 5 weeks. This includes: (1) Technical LIDAR roof feasibility survey [1-2 days], (2) DISCOM feasibility approval [7-10 days], (3) Safe physical solar and inverter mounting by our certified engineers [2-3 days], and (4) Net-meter inspection, seal, and commissioning by the DISCOM inspector [10-15 days].",
+    answer: "Once approvals and materials are ready, installation typically completes within 4–5 working days. The overall timeline, including approvals and net-metering, depends on DISCOM processing and site readiness. It begins with a free professional site survey by our engineers, followed by DISCOM approvals, mounting and commissioning.",
   },
   {
-    question: "What makes UVR N-Type dual glass panels better than traditional ones?",
-    answer: "Traditional panels are monofacial (single-sided). UVR Green Energies uses next-generation N-Type TOPCon Dual-Glass Bifacial panels. These capture direct sunlight on the top face and secondary, ground-reflected sunlight (albedo) on the bottom face, yielding up to 15% more power per sq ft, especially in high-temperature environments.",
+    question: "What makes UVR N-Type bifacial panels better than traditional ones?",
+    answer: "Bifacial N-Type TOPCon panels offer higher efficiency, lower degradation, better temperature performance and more generation than conventional Mono PERC — delivering superior long-term performance and higher lifetime savings.",
   },
   {
     question: "How do I clean and maintain the solar system?",
-    answer: "Rooftop solar requires very low maintenance. Cleaning the glass surface with water and a soft wiper once every 10 to 14 days removes dust and bird droppings, maximizing photon capture. UVR string inverters feature automated self-diagnosis alerts, warning you on your mobile app if a particular panel string is experiencing dust or shading losses.",
+    answer: "Solar systems need minimal maintenance — periodic cleaning, visual inspections and routine health checks. UVR provides comprehensive after-sales support and optional AMC services.",
+  },
+  {
+    question: "What happens to my solar system during a power cut?",
+    answer: "A standard grid-connected system automatically shuts down during an outage for safety (anti-islanding). Backup during outages needs a battery/hybrid system, which UVR can provide on request.",
   },
 ];
 
@@ -164,15 +140,6 @@ export default function App() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [exploreOpen]);
 
-  // Live generation counters across Indian cities
-  const [cityStats, setCityStats] = useState({
-    pune: 1845.2,
-    ahmedabad: 1422.8,
-    noida: 911.5,
-    bengaluru: 2045.4,
-    co2Cumulative: 18442.8,
-  });
-
   // Schedule floating modal shortcut
   const [bookingForm, setBookingForm] = useState({
     isOpen: false,
@@ -218,20 +185,6 @@ export default function App() {
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  // Soft fluctuations for active generation stats
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCityStats(prev => ({
-        pune: Number((prev.pune + (Math.random() - 0.4) * 0.4).toFixed(1)),
-        ahmedabad: Number((prev.ahmedabad + (Math.random() - 0.45) * 0.35).toFixed(1)),
-        noida: Number((prev.noida + (Math.random() - 0.5) * 0.2).toFixed(1)),
-        bengaluru: Number((prev.bengaluru + (Math.random() - 0.4) * 0.5).toFixed(1)),
-        co2Cumulative: Number((prev.co2Cumulative + 0.02).toFixed(2)),
-      }));
-    }, 3000);
-    return () => clearInterval(timer);
   }, []);
 
   // Escape closes mobile menu & explore dropdown
@@ -386,12 +339,12 @@ export default function App() {
           {/* Actions */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
-              href="tel:+912067189900"
+              href="tel:+919537566799"
               className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors"
-              aria-label="Call +91 20 6718 9900"
+              aria-label="Call +91 95375 66799"
             >
               <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span className="hidden xl:inline font-mono">+91 20 6718 9900</span>
+              <span className="hidden xl:inline font-mono">+91 95375 66799</span>
             </a>
 
             <button
@@ -558,11 +511,11 @@ export default function App() {
 
               <div className="shrink-0 p-4 border-t border-slate-800 space-y-3">
                 <a
-                  href="tel:+912067189900"
+                  href="tel:+919537566799"
                   className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800/60 transition-colors"
                 >
                   <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
-                  +91 20 6718 9900
+                  +91 95375 66799
                 </a>
                 <button
                   type="button"
@@ -598,54 +551,54 @@ export default function App() {
                   {/* Headline content (7 Cols) */}
                   <div className="lg:col-span-7 space-y-6 relative z-10">
                     <span className="bg-slate-900 border border-slate-800 text-sky-400 text-xs font-semibold px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 font-mono">
-                      <Award className="w-4 h-4 text-blue-500" /> Tier-1 Engineering &bull; Powered by UVR TECHSOL
+                      <Award className="w-4 h-4 text-blue-500" /> MNRE Approved Solar EPC &bull; Powered by UVR TECHSOL Pvt. Ltd.
                     </span>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] font-sans">
-                      <span className="text-gradient-primary">Next-Gen Solar Power &bull;</span> <br />
                       <span className="bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 bg-clip-text text-transparent hero-accent-gradient">
-                        Zero Electricity Bills.
+                        Powering a Greener Tomorrow
                       </span>
                     </h1>
 
                     <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl">
-                      UVR Green Energies engineers custom, high-yield rooftop solar systems across India. Using bi-directional net-metering and PM Surya Ghar subsidies, we slash residential, commercial, and housing society electric tariffs to zero.
+                      UVR Green Energies is a trusted Solar EPC company dedicated to delivering innovative, efficient, and sustainable energy solutions. By combining advanced technology, engineering expertise, and reliable execution, we empower our clients to reduce electricity costs while contributing to a cleaner and greener future.
                     </p>
 
                     {/* Quick Stats Bento */}
                     <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2">
                       <div className="bg-slate-950/60 border border-slate-900 rounded-2xl p-3 sm:p-4">
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-white font-mono">15K+</div>
-                        <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1">Solar Rooftops Deployed</div>
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-white font-mono">1200+</div>
+                        <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1">Installations Completed</div>
                       </div>
                       <div className="bg-slate-950/60 border border-slate-900 rounded-2xl p-3 sm:p-4">
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-cyan-400 font-mono">₹78K</div>
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-cyan-400 font-mono">7 MW+</div>
+                        <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1">Total Installed Capacity</div>
+                      </div>
+                      <div className="bg-slate-950/60 border border-slate-900 rounded-2xl p-3 sm:p-4">
+                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-indigo-400 font-mono">₹78K</div>
                         <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1">Max Central Subsidy</div>
-                      </div>
-                      <div className="bg-slate-950/60 border border-slate-900 rounded-2xl p-3 sm:p-4">
-                        <div className="text-xl sm:text-2xl md:text-3xl font-black text-indigo-400 font-mono">25 Yrs</div>
-                        <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1">Sustained Guarantee</div>
                       </div>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                      <a
-                        href="#simulator"
+                      <button
+                        type="button"
+                        onClick={() => setBookingForm(prev => ({ ...prev, isOpen: true, success: false }))}
                         className="flex items-center justify-center gap-2 py-3.5 px-6 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-blue-500/10 hover:scale-[1.02]"
                       >
-                        <Compass className="w-4 h-4" /> Open Solar Sandbox
-                      </a>
+                        <Compass className="w-4 h-4" /> Book Free Survey
+                      </button>
                       <a
                         href="#estimator"
                         onClick={goToEstimator}
                         className="flex items-center justify-center gap-2 py-3.5 px-6 bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-800 rounded-xl font-bold text-sm transition-all"
                       >
-                        PM Surya Ghar Subsidy Estimator
+                        Subsidy Calculator
                       </a>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 text-[10px] sm:text-[11px] text-slate-500 font-mono">
-                      <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" /> ALMM-Approved Components</span>
+                      <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" /> ALMM-Listed Modules (List-II)</span>
                       <span className="flex items-center gap-1"><BadgeCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 shrink-0" /> DISCOM Net-Metering Included</span>
                     </div>
                   </div>
@@ -668,30 +621,30 @@ export default function App() {
                       {/* HUD Overlays */}
                       <div className="relative z-10 flex justify-between items-start on-image-text">
                         <span className="bg-slate-950/85 text-white border border-slate-800 text-[9px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-md on-image-badge">
-                          Actual Pune Site Photo
+                          Vadodara Rooftop Project
                         </span>
-                        <div className="bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono font-bold px-2.5 py-1 rounded-md flex items-center gap-1 animate-pulse">
-                          <Sun className="w-3.5 h-3.5" /> High-Performance Active
+                        <div className="bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono font-bold px-2.5 py-1 rounded-md flex items-center gap-1">
+                          <Sun className="w-3.5 h-3.5" /> Grid-Connected
                         </div>
                       </div>
 
                       <div className="relative z-10 space-y-4 on-image-text">
                         <div className="text-left space-y-1">
-                          <h3 className="text-xl font-bold text-white tracking-tight">Vandana Bungalow Estate</h3>
+                          <h3 className="text-xl font-bold text-white tracking-tight">Vadodara Residential Rooftop</h3>
                           <p className="text-xs text-slate-300 leading-relaxed">
-                            Completed 12.5 kWp off-grid solar infrastructure capturing direct photons on top and reflected back-reflection off the white terrace floor.
+                            A 25 kWp grid-connected rooftop system in Vadodara using premium Adani Elan Shine TOPCon bifacial modules and a Solaryaan inverter for reliable, high-yield clean energy.
                           </p>
                         </div>
 
-                        {/* Specs Panel */}
-                        <div className="bg-slate-950/90 border border-slate-850 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs font-mono">
+                        {/* Specs Panel — stays dark glass over photo in both themes */}
+                        <div className="on-image-panel bg-slate-950/90 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs font-mono">
                           <div>
-                            <span className="text-slate-500 block text-[9px]">SYSTEM SIZING</span>
-                            <span className="text-white font-bold">12.5 kWp Array</span>
+                            <span className="text-slate-400 block text-[9px] uppercase tracking-wide">System size</span>
+                            <span className="text-white font-bold">25 kWp Array</span>
                           </div>
                           <div className="sm:text-right">
-                            <span className="text-slate-500 block text-[9px]">ANNUAL CASH SAVINGS</span>
-                            <span className="text-cyan-400 font-bold">₹ 1,51,000/yr</span>
+                            <span className="text-slate-400 block text-[9px] uppercase tracking-wide">Annual generation</span>
+                            <span className="text-cyan-400 font-bold">~37,800 kWh/yr</span>
                           </div>
                         </div>
                       </div>
@@ -700,51 +653,40 @@ export default function App() {
                   </div>
                 </section>
 
-                {/* REAL-TIME COUNTRYWIDE GENERATION GRID */}
+                {/* VERIFIED IMPACT NUMBERS */}
                 <section className="bg-slate-900/40 border border-slate-850 p-6 md:p-8 rounded-3xl space-y-6 text-left">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                      <span className="text-orange-400 text-[10px] font-mono tracking-widest uppercase block">Live Environmental Telemetry</span>
-                      <h3 className="text-xl font-bold text-white tracking-tight font-sans mt-0.5">UVR Countrywide Generation Ledger</h3>
+                      <span className="text-orange-400 text-[10px] font-mono tracking-widest uppercase block">Our Impact So Far</span>
+                      <h3 className="text-xl font-bold text-white tracking-tight font-sans mt-0.5">UVR Green Energies By the Numbers</h3>
                     </div>
                     <div className="bg-slate-950 border border-slate-800 rounded-xl px-3 sm:px-4 py-2 font-mono text-[10px] sm:text-xs flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <div className="relative flex h-2.5 w-2.5 shrink-0">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                      </div>
-                      <span className="text-slate-400">TODAY'S CARBON OFFSET:</span>
-                      <span className="text-emerald-400 font-extrabold">{cityStats.co2Cumulative} Tons</span>
+                      <Leaf className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <span className="text-slate-400">EST. ANNUAL CO&#8322; OFFSET:</span>
+                      <span className="text-emerald-400 font-extrabold">~7,400 Tonnes</span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {/* Pune */}
-                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900 relative overflow-hidden">
-                      <span className="text-[10px] text-slate-500 font-mono">PUNE PLANT GRID</span>
-                      <div className="text-xl font-bold text-white font-mono mt-1">{cityStats.pune} <span className="text-xs text-slate-500">kW</span></div>
-                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">110 residential hubs</span>
-                      <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900">
+                      <span className="text-[10px] text-slate-500 font-mono">INSTALLATIONS</span>
+                      <div className="text-xl font-bold text-white font-mono mt-1">1200+</div>
+                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">1170+ residential, 30+ C&amp;I</span>
                     </div>
-                    {/* Ahmedabad */}
-                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900 relative overflow-hidden">
-                      <span className="text-[10px] text-slate-500 font-mono">AHMEDABAD LIAISON</span>
-                      <div className="text-xl font-bold text-white font-mono mt-1">{cityStats.ahmedabad} <span className="text-xs text-slate-500">kW</span></div>
-                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">92 residential hubs</span>
-                      <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900">
+                      <span className="text-[10px] text-slate-500 font-mono">INSTALLED CAPACITY</span>
+                      <div className="text-xl font-bold text-white font-mono mt-1">7 MW+</div>
+                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">across Gujarat &amp; beyond</span>
                     </div>
-                    {/* Noida */}
-                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900 relative overflow-hidden">
-                      <span className="text-[10px] text-slate-500 font-mono">NOIDA HUBS</span>
-                      <div className="text-xl font-bold text-white font-mono mt-1">{cityStats.noida} <span className="text-xs text-slate-500">kW</span></div>
-                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">48 system complexes</span>
-                      <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900">
+                      <span className="text-[10px] text-slate-500 font-mono">CLEAN ENERGY / YEAR</span>
+                      <div className="text-xl font-bold text-white font-mono mt-1">1.05 Cr+ <span className="text-xs text-slate-500">units</span></div>
+                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">≈ 8.75 lakh units/month</span>
                     </div>
-                    {/* Bengaluru */}
-                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900 relative overflow-hidden">
-                      <span className="text-[10px] text-slate-500 font-mono">BENGALURU COMMERCIAL</span>
-                      <div className="text-xl font-bold text-white font-mono mt-1">{cityStats.bengaluru} <span className="text-xs text-slate-500">kW</span></div>
-                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">14 corporate sites</span>
-                      <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-900">
+                      <span className="text-[10px] text-slate-500 font-mono">PANEL WARRANTY</span>
+                      <div className="text-xl font-bold text-white font-mono mt-1">Up to 30 <span className="text-xs text-slate-500">yrs</span></div>
+                      <span className="text-[9px] text-slate-500 mt-1 block font-mono">performance (12-yr product)</span>
                     </div>
                   </div>
                 </section>
@@ -782,14 +724,14 @@ export default function App() {
                       </div>
                       <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
                         <div className="space-y-1.5">
-                          <h4 className="text-base font-bold text-white">TOPCon Bifacial Dual-Glass</h4>
+                          <h4 className="text-base font-bold text-white">N-Type TOPCon Bifacial Dual-Glass</h4>
                           <p className="text-xs text-slate-400 leading-relaxed">
-                            Dual-glass architecture captures secondary light reflecting off your terrace floor (albedo effect), giving an average **12-15% increase** in total raw energy output.
+                            Dual-glass architecture captures secondary light reflecting off your terrace floor (albedo effect), delivering higher efficiency and lower degradation than conventional Mono PERC. Brands: Rayzon, Pahal, Adani, Waaree, Premier Energies.
                           </p>
                         </div>
                         <div className="border-t border-slate-900 pt-3 flex justify-between items-center text-[10px] font-mono">
-                          <span className="text-slate-500">GUARANTEE SLA</span>
-                          <span className="text-amber-400 font-bold">25 Years 87.4% Output</span>
+                          <span className="text-slate-500">WARRANTY</span>
+                          <span className="text-amber-400 font-bold">12-yr Product + 30-yr Performance</span>
                         </div>
                       </div>
                     </div>
@@ -806,14 +748,14 @@ export default function App() {
                       </div>
                       <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
                         <div className="space-y-1.5">
-                          <h4 className="text-base font-bold text-white">Smart IoT String Inverter</h4>
+                          <h4 className="text-base font-bold text-white">Smart String / Hybrid Inverter</h4>
                           <p className="text-xs text-slate-400 leading-relaxed">
-                            Turn sunlight into grid-synchronized AC power. Features dual Maximum Power Point Tracking (MPPT) channels to optimize shaded panel strings, and Wi-Fi telemetry diagnostics.
+                            Turn sunlight into grid-synchronized AC power. On-grid, optimizer, micro and hybrid options from Solaryaan, Solis, GoodWe, Sungrow, Polycab, Havells, SolarEdge and Enphase, with Wi-Fi diagnostics.
                           </p>
                         </div>
                         <div className="border-t border-slate-900 pt-3 flex justify-between items-center text-[10px] font-mono">
-                          <span className="text-slate-500">CONVERSION PEAK</span>
-                          <span className="text-blue-400 font-bold">98.6% Symmetrical</span>
+                          <span className="text-slate-500">WARRANTY</span>
+                          <span className="text-blue-400 font-bold">7–10 Years</span>
                         </div>
                       </div>
                     </div>
@@ -830,122 +772,44 @@ export default function App() {
                       </div>
                       <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
                         <div className="space-y-1.5">
-                          <h4 className="text-base font-bold text-white">Modular LiFePO4 Battery Vault</h4>
+                          <h4 className="text-base font-bold text-white">Hybrid Backup &amp; Storage (On Request)</h4>
                           <p className="text-xs text-slate-400 leading-relaxed">
-                            Zero reliance on blackouts. High-safety lithium-iron phosphate vaults that automatically charge during high solar generation to backup deep air conditioner loads.
+                            Battery storage is not part of our standard rooftop offering, but for sites needing outage backup we can design a hybrid system with battery storage as an optional add-on.
                           </p>
                         </div>
                         <div className="border-t border-slate-900 pt-3 flex justify-between items-center text-[10px] font-mono">
-                          <span className="text-slate-500">DEEP CYCLES SLA</span>
-                          <span className="text-emerald-400 font-bold">10 Years 6000 Cycles</span>
+                          <span className="text-slate-500">AVAILABILITY</span>
+                          <span className="text-emerald-400 font-bold">Optional / On Request</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </section>
 
-                {/* EXPANSIVE INTERACTIVE VIDEO TOUR WALKTHROUGH */}
-                <section className="bg-slate-900 border border-slate-850 rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row items-center gap-8 text-left relative overflow-hidden shadow-xl">
-                  {/* Decorative mesh */}
-                  <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.1]" />
-                  <div className="absolute top-0 right-0 w-80 h-full bg-blue-500/5 blur-3xl pointer-events-none" />
-
-                  {/* Left (6 Cols equivalent) */}
-                  <div className="lg:col-span-6 space-y-4 flex-1 relative z-10">
-                    <span className="bg-orange-500/10 text-orange-400 text-[10px] font-mono px-3 py-1 rounded-full border border-orange-500/20 uppercase tracking-wider inline-block">
-                      Enterprise Video Tour
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-snug">
-                      High-Precision LIDAR Drone Survey &bull; Operational Video Walkthrough
-                    </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      Curious how our technicians perform a complete 3D shadow evaluation in under 15 minutes? Watch this enterprise walkthrough detailing flight paths, solar angle simulation, and DISCOM liasons.
-                    </p>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-[10px] sm:text-[11px] font-mono">
-                      <div className="flex items-center gap-2 text-slate-300">
-                        <BadgeCheck className="w-4 h-4 text-emerald-400" />
-                        <span> contactless 3D Scan</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-300">
-                        <BadgeCheck className="w-4 h-4 text-emerald-400" />
-                        <span> DISCOM NOC Approved</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-300">
-                        <BadgeCheck className="w-4 h-4 text-emerald-400" />
-                        <span> Pune HQ Engineers</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-300">
-                        <BadgeCheck className="w-4 h-4 text-emerald-400" />
-                        <span> 4.9 Star Rating</span>
+                {/* Survey CTA — replaces fake video walkthrough */}
+                <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-orange-950/30 p-6 md:p-10">
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div className="space-y-3 max-w-xl text-left">
+                      <span className="inline-flex text-orange-400 text-xs font-semibold tracking-wide uppercase">Free site survey</span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                        Ready for a professional roof assessment?
+                      </h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">
+                        Our Vadodara engineers visit your site, measure shading and structural readiness, then size a system that maximises subsidy and savings — at no cost.
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-xs text-slate-300">
+                        <span className="inline-flex items-center gap-1.5"><BadgeCheck className="w-4 h-4 text-emerald-400" /> Free on-site survey</span>
+                        <span className="inline-flex items-center gap-1.5"><BadgeCheck className="w-4 h-4 text-emerald-400" /> DISCOM &amp; subsidy support</span>
+                        <span className="inline-flex items-center gap-1.5"><BadgeCheck className="w-4 h-4 text-emerald-400" /> MNRE-approved EPC</span>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Right (Visual video placeholder) */}
-                  <div className="lg:col-span-6 flex-1 w-full relative z-10">
-                    <div className="relative aspect-video bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden flex items-center justify-center group shadow-2xl cursor-pointer">
-                      
-                      {/* Placeholder thumbnail backdrop */}
-                      <img 
-                        src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80" 
-                        alt="Video Thumbnail" 
-                        referrerPolicy="no-referrer"
-                        className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-[1.02] transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent image-scrim-soft" />
-
-                      {/* Glowing Pulsing Play Button */}
-                      <div className="relative z-10 p-5 bg-orange-500 hover:bg-orange-600 text-slate-950 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/20 hover:scale-105 transition-all">
-                        <Play className="w-8 h-8 fill-slate-950 translate-x-0.5" />
-                      </div>
-
-                      {/* Video Length Badge */}
-                      <span className="absolute bottom-4 right-4 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono rounded text-slate-400">
-                        HD 03:45 MINS
-                      </span>
-                    </div>
-                  </div>
-
-                </section>
-
-                {/* TESTIMONIALS & REVIEWS SLIDER */}
-                <section className="bg-slate-900/20 border-t border-b border-slate-900 py-16 text-left">
-                  <div className="text-center max-w-xl mx-auto mb-12">
-                    <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">Verified Solar Testimonials</span>
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-white mt-1.5 font-sans">
-                      Client Success Ledger
-                    </h2>
-                    <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
-                      Hear directly from homeowners who eliminated high DISCOM utility tariffs using UVR systems.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {TESTIMONIALS.map((t, idx) => (
-                      <div key={idx} className="bg-slate-950 border border-slate-850 p-6 rounded-3xl flex flex-col justify-between h-full relative">
-                        <div className="text-4xl text-slate-800 font-black absolute top-2 right-4 leading-none select-none">“</div>
-                        
-                        <div className="space-y-4">
-                          <div className="flex gap-1">
-                            {[...Array(t.rating)].map((_, i) => (
-                              <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                            ))}
-                          </div>
-                          <p className="text-xs text-slate-300 italic leading-relaxed relative z-10">
-                            "{t.quote}"
-                          </p>
-                        </div>
-
-                        <div className="flex items-center gap-3 mt-6 pt-4 border-t border-slate-900">
-                          <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full border border-slate-850 object-cover" />
-                          <div>
-                            <h4 className="text-xs font-bold text-white">{t.name}</h4>
-                            <span className="text-[10px] text-slate-500 font-mono block mt-0.5">{t.location} &bull; <strong className="text-orange-400">{t.systemSize}</strong></span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setBookingForm(prev => ({ ...prev, isOpen: true, success: false }))}
+                      className="btn-primary shrink-0 px-6 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold transition-colors shadow-lg shadow-orange-900/20"
+                    >
+                      Book Free Survey
+                    </button>
                   </div>
                 </section>
 
@@ -1024,7 +888,7 @@ export default function App() {
               <AboutUs />
             )}
 
-            {/* DRONE SURVEY / CONTACT */}
+            {/* CONTACT */}
             {currentPage === 'contact' && (
               <ContactPortal />
             )}
@@ -1070,11 +934,22 @@ export default function App() {
             <ul className="space-y-2 text-slate-400 font-mono text-[11px] leading-normal">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                <span>UVR TECHSOL Pvt. Ltd., 3rd Floor, Shreenath Plaza, Dnyaneshwar Paduka Chowk, FC Road, Pune, MH, India - 411005</span>
+                <span>UVR TECHSOL Pvt. Ltd., 423, Vihav Trade Center, B/s Waves Clube, Vasna–Bhayli Canal Road, Bhayli, Vadodara, Gujarat – 391410, India</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                <span>
+                  <a href="tel:+919537566799" className="hover:underline">+91 95375 66799</a>,{' '}
+                  <a href="tel:+919737366799" className="hover:underline">+91 97373 66799</a>
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-orange-500 flex-shrink-0" />
-                <a href="mailto:info@uvrtechsol.com" className="hover:underline">info@uvrtechsol.com</a>
+                <a href="mailto:info@uvrgreenenergies.com" className="hover:underline">info@uvrgreenenergies.com</a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Info className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                <span>Mon–Sat, 9:30 AM – 6:30 PM</span>
               </li>
             </ul>
           </div>
@@ -1082,8 +957,8 @@ export default function App() {
         </div>
 
         <div className="max-w-7xl mx-auto border-t border-slate-900 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-mono text-center sm:text-left">
-          <span>&copy; {new Date().getFullYear()} UVR Green Energies. All Rights Reserved.</span>
-          <span className="text-slate-400 max-w-md">Powered by UVR TECHSOL Pvt. Ltd.</span>
+          <span>&copy; {new Date().getFullYear()} UVR TECHSOL PRIVATE LIMITED. All Rights Reserved.</span>
+          <span className="text-slate-400 max-w-md">UVR Green Energies &bull; Powered by UVR TECHSOL Pvt. Ltd.</span>
         </div>
       </footer>
 
@@ -1113,7 +988,7 @@ export default function App() {
             >
               <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
                 <h3 id="booking-dialog-title" className="text-lg font-bold text-white flex items-center gap-1.5">
-                  <Sparkles className="w-5 h-5 text-orange-500" /> Book Drone Roof Survey
+                  <Sparkles className="w-5 h-5 text-orange-500" /> Book Free Site Survey
                 </h3>
                 <button
                   onClick={() => setBookingForm(prev => ({ ...prev, isOpen: false }))}
@@ -1177,7 +1052,7 @@ export default function App() {
                     Confirm Appointment Slot
                   </button>
                   <p className="text-[10px] text-slate-500 text-center mt-2 leading-relaxed font-sans">
-                    *Our LIDAR drone survey is contactless. Our remote pilot scans your roof shape within 15 minutes, generating shadow-free CAD blueprints.
+                    *Our site survey is a free professional visit. Our engineers assess your roof, shading and structure to design the right system for you.
                   </p>
                 </form>
               ) : (
@@ -1188,7 +1063,7 @@ export default function App() {
                   <div>
                     <h4 className="text-base font-bold text-white">Survey Slot Confirmed!</h4>
                     <p className="text-xs text-slate-400 leading-relaxed mt-2 max-w-xs mx-auto">
-                      Congratulations, <strong>{bookingForm.name}</strong>! Your LIDAR mapping slot for <strong>{bookingForm.slot}</strong> is locked. Our dispatch team will call you shortly.
+                      Congratulations, <strong>{bookingForm.name}</strong>! Your free site survey slot for <strong>{bookingForm.slot}</strong> is locked. Our team will call you shortly.
                     </p>
                   </div>
                   <button

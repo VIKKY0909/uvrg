@@ -734,8 +734,8 @@ export default function SolarSimulator({ onApplyToCalculator }: SolarSimulatorPr
                   <Battery className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-200">24H Smart Battery Vault</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">Store daytime solar excess for zero grid reliance.</div>
+                  <div className="text-xs font-bold text-slate-200">Battery Backup (On Request)</div>
+                  <div className="text-[10px] text-slate-400 mt-0.5">Optional hybrid storage — see how storing daytime excess reduces grid reliance.</div>
                 </div>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">

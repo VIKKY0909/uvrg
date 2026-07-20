@@ -38,13 +38,27 @@ function getActiveSubsidyTier(kw: number) {
   return SUBSIDY_TIERS[0];
 }
 
+// PM Surya Ghar central subsidy: ₹30,000/kW for first 2 kW, +₹18,000 for the
+// 3rd kW, capped at ₹78,000 (1 kW→₹30k, 2 kW→₹60k, 3 kW+→₹78k).
+function getCentralSubsidy(kw: number) {
+  return Math.min(30000 * Math.min(kw, 2) + 18000 * Math.max(0, Math.min(kw, 3) - 2), 78000);
+}
+
+// Engineering assumptions (founder-verified, FACTS §7)
+const UNIT_RATE = 8.5;             // ₹/unit residential tariff
+const SQFT_PER_KW = 70;            // roof area needed per 1 kW
+const UNITS_PER_KW_MONTH = 126;    // generation per 1 kW per month
+const TARIFF_ESCALATION = 0.05;    // 5% annual escalation
+const COST_PER_KW = 54750;         // residential system cost per kW
+const PANEL_WATTAGE = 550;         // Wp per panel
+
 export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorProps) {
   const [step, setStep] = useState(1);
 
   const [inputs, setInputs] = useState<QuoteInput>({
     roofArea: 350,
     monthlyBill: 4500,
-    state: 'Maharashtra',
+    state: 'Gujarat',
     customerType: 'Residential',
     connectionType: '1-Phase',
   });
@@ -61,9 +75,9 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
 
   useEffect(() => {
     if (initialPanelCount) {
-      const estimatedKw = initialPanelCount * 0.45;
-      const estimatedRoofArea = Math.round(estimatedKw * 100);
-      const estimatedBill = Math.round(estimatedKw * 120 * 8 * 1.15);
+      const estimatedKw = initialPanelCount * (PANEL_WATTAGE / 1000);
+      const estimatedRoofArea = Math.round(estimatedKw * SQFT_PER_KW);
+      const estimatedBill = Math.round(estimatedKw * UNITS_PER_KW_MONTH * UNIT_RATE);
 
       setInputs(prev => ({
         ...prev,
@@ -77,10 +91,10 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
   const calculateQuote = () => {
     const { roofArea, monthlyBill, state, customerType } = inputs;
 
-    const unitRate = 8.5;
+    const unitRate = UNIT_RATE;
     const monthlyUnits = monthlyBill / unitRate;
-    const requiredKwByBill = monthlyUnits / 120;
-    const maxKwByRoof = roofArea / 100;
+    const requiredKwByBill = monthlyUnits / UNITS_PER_KW_MONTH;
+    const maxKwByRoof = roofArea / SQFT_PER_KW;
 
     let recommendedKw = Math.min(requiredKwByBill, maxKwByRoof);
 
@@ -92,17 +106,16 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
 
     recommendedKw = Math.round(recommendedKw * 2) / 2;
 
-    const panelsCount = Math.ceil(recommendedKw / 0.54);
-    const ratePerKw = 60000;
+    const panelsCount = Math.ceil((recommendedKw * 1000) / PANEL_WATTAGE);
+    const ratePerKw = COST_PER_KW;
     const totalCost = recommendedKw * ratePerKw;
 
     let centralSubsidy = 0;
     if (customerType === 'Residential') {
-      if (recommendedKw >= 3.0) centralSubsidy = 78000;
-      else if (recommendedKw >= 2.0) centralSubsidy = 60000;
-      else centralSubsidy = 30000;
+      centralSubsidy = getCentralSubsidy(recommendedKw);
     } else if (customerType === 'Housing Society') {
-      centralSubsidy = Math.min(recommendedKw * 18000, 900000);
+      // GHS/RWA: ₹18,000 per kW up to 500 kW
+      centralSubsidy = Math.min(recommendedKw * 18000, 18000 * 500);
     }
 
     const selectedStateConfig = INDIAN_STATES.find(s => s.name === state);
@@ -115,7 +128,7 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
     }
 
     const netCost = totalCost - centralSubsidy - stateSubsidy;
-    const monthlyGenUnits = recommendedKw * 120;
+    const monthlyGenUnits = recommendedKw * UNITS_PER_KW_MONTH;
     const monthlySavings = monthlyGenUnits * unitRate;
     const annualSavings = monthlySavings * 12;
     const paybackYears = Number((netCost / annualSavings).toFixed(1));
@@ -124,10 +137,10 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
     let currentYearSavings = annualSavings;
     for (let year = 1; year <= 25; year++) {
       lifetimeSavings += currentYearSavings;
-      currentYearSavings *= 1.04;
+      currentYearSavings *= 1 + TARIFF_ESCALATION;
     }
 
-    const annualUnits = recommendedKw * 120 * 12;
+    const annualUnits = recommendedKw * UNITS_PER_KW_MONTH * 12;
     const co2SavedTons = Number(((annualUnits * 0.82) / 1000).toFixed(1));
     const treesEquivalent = Math.round(co2SavedTons * 45);
 
@@ -349,7 +362,7 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
                       />
                       <div className="flex justify-between text-[11px] text-slate-500">
                         <span>100 sq ft</span>
-                        <span>~1 kW per 100 sq ft</span>
+                        <span>~1 kW per 70 sq ft</span>
                         <span>3,000 sq ft</span>
                       </div>
                     </div>
@@ -417,7 +430,7 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
                   <button
                     type="button"
                     onClick={() => {
-                      setInputs({ roofArea: 350, monthlyBill: 4500, state: 'Maharashtra', customerType: 'Residential', connectionType: '1-Phase' });
+                      setInputs({ roofArea: 350, monthlyBill: 4500, state: 'Gujarat', customerType: 'Residential', connectionType: '1-Phase' });
                       setStep(1);
                     }}
                     className="px-4 py-2.5 text-sm text-slate-400 hover:text-white border border-slate-800 rounded-xl hover:bg-slate-900 transition-colors"
@@ -505,6 +518,10 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
                       </span>
                     </div>
                   )}
+
+                  <p className="text-[11px] text-slate-500 leading-relaxed pt-1">
+                    Estimates only; actual subsidy is subject to government approval and prevailing MNRE/DISCOM guidelines.
+                  </p>
                 </div>
 
                 {/* Savings row */}
@@ -616,7 +633,7 @@ export default function QuoteCalculator({ initialPanelCount }: QuoteCalculatorPr
                         <div>
                           <p className="text-sm font-bold text-white">Subsidy slot reserved!</p>
                           <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                            Thanks, {leadForm.name}! Your {result.recommendedCapacityKw} kW estimate is saved. Our team will call you within 24 hours to schedule a free LIDAR roof survey.
+                            Thanks, {leadForm.name}! Your {result.recommendedCapacityKw} kW estimate is saved. Our team will call you within 24 hours to schedule a free professional site survey.
                           </p>
                         </div>
                       </motion.div>
