@@ -91,6 +91,84 @@ function fieldClass(error?: boolean) {
   } rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/40 transition-colors`;
 }
 
+/**
+ * Live hosts (AI Studio / static) often have no Express `/api/*` routes → 404.
+ * Post straight to the Apps Script web app in that case (CORS allows it).
+ * Prefer VITE_GOOGLE_SHEETS_WEBAPP_URL; default matches .env.example.
+ */
+const SHEETS_WEBAPP_URL =
+  (import.meta.env.VITE_GOOGLE_SHEETS_WEBAPP_URL as string | undefined)?.trim() ||
+  'https://script.google.com/macros/s/AKfycbzg1fvGzUX8qZKwDFvqk8WFh-jtjhOZC0pdbUPdWse29maEbfHOKu7bdon0QWdANLSYOA/exec';
+
+type RegistrationPayload = {
+  fullName: string;
+  phone: string;
+  email: string;
+  organizationType: string;
+  company: string;
+  city: string;
+  preferredDistrict: string;
+  partnerType: string;
+  experienceAreas: string;
+  yearsExperience: string;
+  hearAbout: string;
+  notes: string;
+  eventTitle: string;
+  eventDate: string;
+  eventVenue: string;
+};
+
+async function postRegistrationToSheets(payload: RegistrationPayload): Promise<void> {
+  if (!SHEETS_WEBAPP_URL) {
+    throw new Error(
+      'Registration endpoint is missing. Please call +91 95375 66799 or try again later.'
+    );
+  }
+
+  const sheetsRes = await fetch(SHEETS_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({
+      ...payload,
+      timestamp: new Date().toISOString(),
+    }),
+  });
+
+  const text = await sheetsRes.text();
+  let sheetsJson: { result?: string; error?: string } = {};
+  try {
+    sheetsJson = JSON.parse(text);
+  } catch {
+    // ignore HTML / non-JSON
+  }
+
+  if (!sheetsRes.ok || sheetsJson.result !== 'success') {
+    throw new Error(
+      sheetsJson.error ||
+        'Could not save your registration. Please try again or call +91 95375 66799.'
+    );
+  }
+}
+
+async function submitPartnerRegistration(payload: RegistrationPayload): Promise<void> {
+  const res = await fetch('/api/partner-event-register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  // Static / AI Studio live URL: API route does not exist
+  if (res.status === 404) {
+    await postRegistrationToSheets(payload);
+    return;
+  }
+
+  const data = await res.json().catch(() => ({} as { error?: string }));
+  if (!res.ok) {
+    throw new Error(data.error || 'Registration failed. Please try again.');
+  }
+}
+
 export default function ChannelPartnerEvent() {
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
@@ -161,34 +239,28 @@ export default function ChannelPartnerEvent() {
         : form.hearAbout;
 
     try {
-      const res = await fetch('/api/partner-event-register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: form.fullName.trim(),
-          phone,
-          email: form.email.trim().toLowerCase(),
-          organizationType:
-            form.organizationType === 'firm' ? 'Company / Firm' : 'Individual',
-          company:
-            form.organizationType === 'firm' ? form.company.trim() : 'Individual',
-          city: form.city.trim(),
-          preferredDistrict: form.preferredDistrict.trim(),
-          partnerType: form.partnerType === 'new' ? 'New Channel Partner' : 'Existing Channel Partner',
-          experienceAreas: form.experienceAreas.join('; '),
-          yearsExperience: form.yearsExperience.trim() || '—',
-          hearAbout,
-          notes: form.notes.trim() || '—',
-          eventTitle: PARTNER_EVENT.title,
-          eventDate: PARTNER_EVENT.dateLabel,
-          eventVenue: PARTNER_EVENT.venueName,
-        }),
+      await submitPartnerRegistration({
+        fullName: form.fullName.trim(),
+        phone,
+        email: form.email.trim().toLowerCase(),
+        organizationType:
+          form.organizationType === 'firm' ? 'Company / Firm' : 'Individual',
+        company:
+          form.organizationType === 'firm' ? form.company.trim() : 'Individual',
+        city: form.city.trim(),
+        preferredDistrict: form.preferredDistrict.trim(),
+        partnerType:
+          form.partnerType === 'new'
+            ? 'New Channel Partner'
+            : 'Existing Channel Partner',
+        experienceAreas: form.experienceAreas.join('; '),
+        yearsExperience: form.yearsExperience.trim() || '—',
+        hearAbout,
+        notes: form.notes.trim() || '—',
+        eventTitle: PARTNER_EVENT.title,
+        eventDate: PARTNER_EVENT.dateLabel,
+        eventVenue: PARTNER_EVENT.venueName,
       });
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data.error || 'Registration failed. Please try again.');
-      }
 
       setStatus('success');
       setForm(initialForm);

@@ -1,6 +1,8 @@
 # UVR Channel Partner Event — Google Sheets setup
 
-Form posts → `POST /api/partner-event-register` → your **Apps Script web app** → tab **Registrations**.
+Form posts → `POST /api/partner-event-register` (when Express is running) → your **Apps Script web app** → tab **Registrations**.
+
+On some live hosts the `/api/*` route is missing (browser shows **404**). The form then posts **directly** to the Apps Script `/exec` URL (`VITE_GOOGLE_SHEETS_WEBAPP_URL`). Redeploy the frontend after changing that URL.
 
 ## Why the form can say success but the Sheet looks empty
 
