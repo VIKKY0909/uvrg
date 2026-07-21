@@ -43,6 +43,16 @@ Tone & Response Rules:
 - Encourage users to book a free professional manual site survey so our engineers can assess their roof and calculate exact solar capacity.
 - To connect with our team, direct users to call +91 95375 66799 or +91 97373 66799, email info@uvrgreenenergies.com, during business hours Mon–Sat, 9:30 AM – 6:30 PM.`;
 
+/** POST JSON to a Google Apps Script web app (text/plain + follow redirects). */
+async function postToGoogleAppsScript(url: string, payload: unknown): Promise<Response> {
+  return fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+    redirect: "follow",
+  });
+}
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
@@ -111,6 +121,118 @@ async function startServer() {
   // Health check
   app.get("/api/health", (req, res) => {
     res.json({ status: "healthy", timestamp: new Date().toISOString() });
+  });
+
+  // Channel Partner Event registration → Google Sheets (via Apps Script web app)
+  app.post("/api/partner-event-register", async (req, res) => {
+    try {
+      const sheetsUrl = process.env.GOOGLE_SHEETS_WEBAPP_URL;
+      if (!sheetsUrl) {
+        console.error("GOOGLE_SHEETS_WEBAPP_URL is not set");
+        return res.status(503).json({
+          error:
+            "Registration is temporarily unavailable. Please call +91 95375 66799 or try again later.",
+        });
+      }
+
+      const body = req.body || {};
+      const required = [
+        "fullName",
+        "phone",
+        "email",
+        "company",
+        "city",
+        "preferredDistrict",
+        "partnerType",
+        "experienceAreas",
+        "hearAbout",
+      ] as const;
+
+      for (const key of required) {
+        if (!body[key] || String(body[key]).trim() === "") {
+          return res.status(400).json({ error: `Missing field: ${key}` });
+        }
+      }
+
+      const phone = String(body.phone).replace(/\s|-/g, "");
+      if (!/^[6-9]\d{9}$/.test(phone)) {
+        return res.status(400).json({ error: "Invalid phone number" });
+      }
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        fullName: String(body.fullName).trim(),
+        phone,
+        email: String(body.email).trim().toLowerCase(),
+        company: String(body.company).trim(),
+        city: String(body.city).trim(),
+        preferredDistrict: String(body.preferredDistrict).trim(),
+        partnerType: String(body.partnerType).trim(),
+        experienceAreas: String(body.experienceAreas).trim(),
+        yearsExperience: String(body.yearsExperience || "—").trim(),
+        hearAbout: String(body.hearAbout).trim(),
+        notes: String(body.notes || "—").trim(),
+        eventTitle: String(body.eventTitle || "").trim(),
+        eventDate: String(body.eventDate || "").trim(),
+        eventVenue: String(body.eventVenue || "").trim(),
+      };
+
+      const sheetsRes = await postToGoogleAppsScript(sheetsUrl, payload);
+      const text = await sheetsRes.text();
+      let sheetsJson: {
+        result?: string;
+        error?: string;
+        spreadsheetName?: string;
+        spreadsheetUrl?: string;
+        sheetName?: string;
+        rowCount?: number;
+      } = {};
+      try {
+        sheetsJson = JSON.parse(text);
+      } catch {
+        // Misconfigured deployments often return HTML (login / error pages)
+      }
+
+      const looksLikeAuthWall =
+        sheetsRes.status === 401 ||
+        sheetsRes.url.includes("accounts.google.com") ||
+        /accounts\.google\.com|unable to open the file at present/i.test(text);
+
+      if (!sheetsRes.ok || sheetsJson.result !== "success" || looksLikeAuthWall) {
+        console.error("Google Sheets write failed:", sheetsRes.status, text.slice(0, 400));
+        const hint = looksLikeAuthWall
+          ? " Google Apps Script access is wrong — redeploy the web app with Who has access = Anyone (see docs/PARTNER_EVENT_SHEETS_SETUP.md)."
+          : sheetsJson.error
+            ? ` ${sheetsJson.error}`
+            : "";
+        return res.status(502).json({
+          error:
+            "Could not save your registration. Please try again or call +91 95375 66799." +
+            hint,
+        });
+      }
+
+      console.log(
+        "Partner event registration saved:",
+        sheetsJson.spreadsheetName,
+        sheetsJson.sheetName,
+        "row",
+        sheetsJson.rowCount,
+        sheetsJson.spreadsheetUrl
+      );
+
+      res.json({
+        ok: true,
+        sheet: sheetsJson.sheetName || "Registrations",
+        rowCount: sheetsJson.rowCount,
+        spreadsheetName: sheetsJson.spreadsheetName,
+      });
+    } catch (err: any) {
+      console.error("Express /api/partner-event-register error:", err);
+      res.status(500).json({
+        error: err.message || "Internal server error during registration.",
+      });
+    }
   });
 
   // Vite middleware for dev / static serving for prod

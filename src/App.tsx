@@ -16,6 +16,7 @@ import ContactPortal from './components/ContactPortal';
 import WebGLSolarVisualizer from './components/WebGLSolarVisualizer';
 import ServicesPortal from './components/ServicesPortal';
 import AboutUs from './components/AboutUs';
+import ChannelPartnerEvent from './components/ChannelPartnerEvent';
 
 // Import our beautiful photorealistic generated assets
 import uvrBifacialPanels from './assets/images/uvr_bifacial_panels_1782761204892.jpg';
@@ -79,7 +80,8 @@ export default function App() {
       'services/commercial-industrial-solar', 
       'services/ground-mounted-solar', 
       'services/utility-scale-solar', 
-      'simulator', 'academy', 'commercial', 'gallery', 'about', 'contact'
+      'simulator', 'academy', 'commercial', 'gallery', 'about', 'contact',
+      'partner-event'
     ];
     return allowed.includes(hash) ? hash : 'home';
   });
@@ -168,7 +170,8 @@ export default function App() {
         'services/commercial-industrial-solar', 
         'services/ground-mounted-solar', 
         'services/utility-scale-solar', 
-        'simulator', 'academy', 'commercial', 'gallery', 'about', 'contact'
+        'simulator', 'academy', 'commercial', 'gallery', 'about', 'contact',
+        'partner-event'
       ];
       if (hash === 'estimator') {
         setCurrentPage('home');
@@ -224,6 +227,7 @@ export default function App() {
     { id: 'gallery', label: 'Project Gallery' },
     { id: 'academy', label: 'Solar Academy' },
     { id: 'commercial', label: 'Commercial Solar' },
+    { id: 'partner-event', label: 'Partner Meet' },
   ];
 
   const isNavActive = (id: string) => {
@@ -893,6 +897,11 @@ export default function App() {
               <ContactPortal />
             )}
 
+            {/* CHANNEL PARTNER EVENT REGISTRATION */}
+            {currentPage === 'partner-event' && (
+              <ChannelPartnerEvent />
+            )}
+
           </motion.div>
         </AnimatePresence>
       </main>
@@ -916,6 +925,7 @@ export default function App() {
               <li><a href="#estimator" onClick={goToEstimator} className="hover:text-orange-400 transition-colors">Subsidy Calculator</a></li>
               <li><a href="#about" className="hover:text-orange-400 transition-colors">About</a></li>
               <li><a href="#contact" className="hover:text-orange-400 transition-colors">Contact</a></li>
+              <li><a href="#partner-event" className="hover:text-orange-400 transition-colors">Partner Meet</a></li>
             </ul>
           </div>
 

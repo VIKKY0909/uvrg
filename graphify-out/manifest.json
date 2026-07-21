@@ -1,0 +1,497 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1784236995.676005,
+    "ast_hash": "9bd4d4f1d8909facbc485061a5a64ff0",
+    "semantic_hash": ""
+  },
+  "docs/partner-event-google-apps-script.js": {
+    "mtime": 1784606507.3449378,
+    "ast_hash": "39fb1b3819020b719a62ae6380cfa32e",
+    "semantic_hash": ""
+  },
+  "metadata.json": {
+    "mtime": 1782866240.3969908,
+    "ast_hash": "ad89f6c48dd85baabb932506650c7880",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1782858529.5757456,
+    "ast_hash": "20f559fb1cf2821c62ac9cb7fbcb4bcd",
+    "semantic_hash": ""
+  },
+  "server.ts": {
+    "mtime": 1784606519.0128233,
+    "ast_hash": "b10db5428ec30b12061714258b0cbe9f",
+    "semantic_hash": ""
+  },
+  "src/App.tsx": {
+    "mtime": 1784603047.504161,
+    "ast_hash": "3b793b9462271004722a38412357f432",
+    "semantic_hash": ""
+  },
+  "src/components/AboutUs.tsx": {
+    "mtime": 1784565333.5764668,
+    "ast_hash": "a3498b2036cf3b8129b6085781159d9d",
+    "semantic_hash": ""
+  },
+  "src/components/ChannelPartnerEvent.tsx": {
+    "mtime": 1784608579.2166007,
+    "ast_hash": "3445f484fcc56f1e50c50ceb2642b2b5",
+    "semantic_hash": ""
+  },
+  "src/components/CommercialSegment.tsx": {
+    "mtime": 1784238317.1076548,
+    "ast_hash": "b1d94b2a15986b089ec0a3de523b9e7e",
+    "semantic_hash": ""
+  },
+  "src/components/ContactPortal.tsx": {
+    "mtime": 1784238614.5038593,
+    "ast_hash": "1fbca2dfe4d711cc9c128971d5740125",
+    "semantic_hash": ""
+  },
+  "src/components/EducationalHub.tsx": {
+    "mtime": 1784238101.5001366,
+    "ast_hash": "a5c6ae1e9abb480f6b4d09b69850bad0",
+    "semantic_hash": ""
+  },
+  "src/components/GalleryShowcase.tsx": {
+    "mtime": 1784565333.5764668,
+    "ast_hash": "f9574d860f95535cf47bcfb43b08d632",
+    "semantic_hash": ""
+  },
+  "src/components/Logo.tsx": {
+    "mtime": 1784237765.4183152,
+    "ast_hash": "4fb8262f66906aaeb0783a5f1cc618e3",
+    "semantic_hash": ""
+  },
+  "src/components/QuoteCalculator.tsx": {
+    "mtime": 1784238575.5345986,
+    "ast_hash": "ed3fb0a78df382857bc7a41490cd6bf3",
+    "semantic_hash": ""
+  },
+  "src/components/SavingsProjectorChart.tsx": {
+    "mtime": 1784238570.883575,
+    "ast_hash": "b4aa9be3dec6c090b04d065eb5844692",
+    "semantic_hash": ""
+  },
+  "src/components/ServicesPortal.tsx": {
+    "mtime": 1784565333.581087,
+    "ast_hash": "14e68d0ae57972622997ae3fb581f772",
+    "semantic_hash": ""
+  },
+  "src/components/SolarSimulator.tsx": {
+    "mtime": 1784238578.3690479,
+    "ast_hash": "0b0a59e9865b9bc1540d1fa4dc5fea43",
+    "semantic_hash": ""
+  },
+  "src/components/WebGLSolarVisualizer.tsx": {
+    "mtime": 1782867357.7181578,
+    "ast_hash": "c12ee90dbef72af3fb8f511cbdfc2075",
+    "semantic_hash": ""
+  },
+  "src/main.tsx": {
+    "mtime": 1782858529.601855,
+    "ast_hash": "2b36426d5ad7e08ef79746aa524f4fb7",
+    "semantic_hash": ""
+  },
+  "src/types.ts": {
+    "mtime": 1782858529.6326334,
+    "ast_hash": "78bd583bdf22218c1f1fc1501581d01b",
+    "semantic_hash": ""
+  },
+  "src/vite-env.d.ts": {
+    "mtime": 1782858529.6421216,
+    "ast_hash": "5965f914bd79375b65efd9b5438ff89d",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1782858529.794737,
+    "ast_hash": "8827451c4e35790dd3f3538c265e7d15",
+    "semantic_hash": ""
+  },
+  "vite.config.ts": {
+    "mtime": 1782858529.7848916,
+    "ast_hash": "9c319043c25764dfe83b687f74637c6c",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784238004.0301948,
+    "ast_hash": "fb0a5651f81d5b610feb9871868323c6",
+    "semantic_hash": ""
+  },
+  "UVR_ONE_Gujarat_Lead_Pricing_Guide.md": {
+    "mtime": 1782890894.981784,
+    "ast_hash": "81feaec5030d873949389fa26ee6b5a3",
+    "semantic_hash": ""
+  },
+  "UVR_ONE_Market_Pricing_Proof_For_Rahul.md": {
+    "mtime": 1782560234.099541,
+    "ast_hash": "284fc16b2432580f0d6ef63f8059025a",
+    "semantic_hash": ""
+  },
+  "UVR_ONE_Pricing_Validation_Internal.md": {
+    "mtime": 1782890894.9807842,
+    "ast_hash": "7470e95fb80ff79b36c80d22330fb8c6",
+    "semantic_hash": ""
+  },
+  "UVR_ONE_Realistic_Path_For_You.md": {
+    "mtime": 1782548083.9745307,
+    "ast_hash": "9d781fa4140fbc5c09162f3ce73ea848",
+    "semantic_hash": ""
+  },
+  "UVR_ONE_Scope_Quotation_Agreement.md": {
+    "mtime": 1782568801.0561,
+    "ast_hash": "a0b952a7c2140babe772bef7e953fda3",
+    "semantic_hash": ""
+  },
+  "docs/FOUNDER_DATA_CHECKLIST.md": {
+    "mtime": 1782889554.6938424,
+    "ast_hash": "8222fe8f11e530c04930a5269dd34b07",
+    "semantic_hash": ""
+  },
+  "docs/PARTNER_EVENT_SHEETS_SETUP.md": {
+    "mtime": 1784606519.0222218,
+    "ast_hash": "eae71c23a29d2e42085afcb02ed68a57",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1784237773.9098928,
+    "ast_hash": "8668765ea7362d8de633e31577e4781c",
+    "semantic_hash": ""
+  },
+  "logo/JobInfo.TXT": {
+    "mtime": 1783059892.0240755,
+    "ast_hash": "f7d9d16297560396c0edbbaecd33919e",
+    "semantic_hash": ""
+  },
+  "logo/README.md": {
+    "mtime": 1783318585.4872472,
+    "ast_hash": "6960ea6e01e7acee5ddd6d28641560d2",
+    "semantic_hash": ""
+  },
+  "resources/company_extract.txt": {
+    "mtime": 1784182591.713484,
+    "ast_hash": "d46d721ad4762a4d4398b566e55122f6",
+    "semantic_hash": ""
+  },
+  "logo/Logo CDR.PDF": {
+    "mtime": 1783059892.09938,
+    "ast_hash": "04c5f58b738388f2ff09a64418801e70",
+    "semantic_hash": ""
+  },
+  "resources/56037c44-9a2d-47fd-b1a8-6faae8393577.pdf": {
+    "mtime": 1784110865.9155958,
+    "ast_hash": "7f522401371c19466476acc89d624282",
+    "semantic_hash": ""
+  },
+  "resources/726ad188-2cca-4dde-8673-7e05c65dec80.pdf": {
+    "mtime": 1784110865.1051168,
+    "ast_hash": "231344cf25c73f746fdf619a13d40683",
+    "semantic_hash": ""
+  },
+  "resources/ADANI.pdf": {
+    "mtime": 1784110863.1831558,
+    "ast_hash": "5f04ef2f567ce7599b9cc7898118563b",
+    "semantic_hash": ""
+  },
+  "resources/DS_20220714_SG3.0_3.6_4.0RS_Datasheet_V12_EN(GL).pdf": {
+    "mtime": 1784110866.065583,
+    "ast_hash": "c81179223bdf84ce3e2f29eeeb17ea26",
+    "semantic_hash": ""
+  },
+  "resources/DS_20220714_SG5.0_6.0RS_Datasheet_V12_EN(GL).pdf": {
+    "mtime": 1784110866.0258346,
+    "ast_hash": "6db950d03eccdf4e78f7d97b97332f3d",
+    "semantic_hash": ""
+  },
+  "resources/DS_20221121_SG320HX_Datasheet_V17_EN.pdf": {
+    "mtime": 1784110864.858533,
+    "ast_hash": "93f4b779e6ef9e8b28aced45c3df2420",
+    "semantic_hash": ""
+  },
+  "resources/DS_20231113_SG15_17_20RT-P2_Datasheet_V2_EN.pdf": {
+    "mtime": 1784110865.9830978,
+    "ast_hash": "9cf310a786f1eb19e195fcd3c01b497e",
+    "semantic_hash": ""
+  },
+  "resources/DS_20231113_SG5.0_6.0_7.0_8.0_10_12RT-P2_Datasheet_V2_EN.pdf": {
+    "mtime": 1784110865.9489863,
+    "ast_hash": "75a6e336911d94ce53f39649ade45195",
+    "semantic_hash": ""
+  },
+  "resources/DS_20231219_SG36_40_50CX-P2_Datasheet_V4_EN.pdf": {
+    "mtime": 1784110865.879743,
+    "ast_hash": "e174a5064573640804aceb9df5cb166f",
+    "semantic_hash": ""
+  },
+  "resources/DS_20240709_SG125CX-P2_Datasheet_V6_EN.pdf": {
+    "mtime": 1784110864.9693544,
+    "ast_hash": "6848f7bb4e3e0090126a60ef314e6996",
+    "semantic_hash": ""
+  },
+  "resources/DS_20250121_SG320HX-20_Datasheet_V8_EN.pdf": {
+    "mtime": 1784110864.8248088,
+    "ast_hash": "e1e24dc0b48fa0178ff948998fc95095",
+    "semantic_hash": ""
+  },
+  "resources/DS_20250507_ SG200HX-US_Datasheet_V7_EN.pdf": {
+    "mtime": 1784110865.8417802,
+    "ast_hash": "8c93dd82d29fddbe22c547db6c64ffe7",
+    "semantic_hash": ""
+  },
+  "resources/DS_20250617_SG285HX_Datasheet_V15_EN.pdf": {
+    "mtime": 1784110865.03389,
+    "ast_hash": "13d8ef53e18d18a544f273f38a8c9614",
+    "semantic_hash": ""
+  },
+  "resources/DS_20250617_SG333HX_Datasheet_V6_EN.pdf": {
+    "mtime": 1784110865.0732944,
+    "ast_hash": "64a0267bdf31c6a892b72bdeddb84f40",
+    "semantic_hash": ""
+  },
+  "resources/GW_DNS G3_Datasheet-EN.pdf": {
+    "mtime": 1784110864.3729105,
+    "ast_hash": "1cd05f27236f412ff636532cb2aea5cd",
+    "semantic_hash": ""
+  },
+  "resources/GW_DNS-G4_Datasheet-EN.pdf": {
+    "mtime": 1784110864.3416226,
+    "ast_hash": "e3df0f1a9a6ddf456f5413bad06dd24e",
+    "semantic_hash": ""
+  },
+  "resources/GW_HT 73-120K_Datasheet-EN.pdf": {
+    "mtime": 1784110864.409454,
+    "ast_hash": "8b4f15a23dcdfb37d6a155e4d2bf7f64",
+    "semantic_hash": ""
+  },
+  "resources/GW_LVMT_Datasheet-EN.pdf": {
+    "mtime": 1784110864.4897614,
+    "ast_hash": "f42a96166ae14d9148678ab828eaf356",
+    "semantic_hash": ""
+  },
+  "resources/GW_LVSMT 15A_Datasheet-EN.pdf": {
+    "mtime": 1784110864.654663,
+    "ast_hash": "4aa9a542089bf5e9ce355b79b23a40be",
+    "semantic_hash": ""
+  },
+  "resources/GW_MS G3_Datasheet-EN.pdf": {
+    "mtime": 1784110864.7895937,
+    "ast_hash": "f8493073a9487c87ce1addabec6ce18d",
+    "semantic_hash": ""
+  },
+  "resources/GW_MS-G4_Datasheet-EN.pdf": {
+    "mtime": 1784110864.7226248,
+    "ast_hash": "38e4430b4bcb8079be00ffd31161fb48",
+    "semantic_hash": ""
+  },
+  "resources/GW_SDT-G3-30-50kW_Datasheet-EN.pdf": {
+    "mtime": 1784110864.6892934,
+    "ast_hash": "0d193a558adde1b20a676f91c334183c",
+    "semantic_hash": ""
+  },
+  "resources/GW_SDT-G3_Datasheet-EN.pdf": {
+    "mtime": 1784110864.757976,
+    "ast_hash": "7456918b22a18f9dd8a5d6b86f3d341e",
+    "semantic_hash": ""
+  },
+  "resources/GW_SMT 15A_Datasheet-EN.pdf": {
+    "mtime": 1784110864.620433,
+    "ast_hash": "817362fca52db7cd60cd406bd5f9effb",
+    "semantic_hash": ""
+  },
+  "resources/GW_SMT 50-60kW_Datasheet-EN.pdf": {
+    "mtime": 1784110864.5891545,
+    "ast_hash": "37cfa2f78f99e9b217eddba2cfb6bec5",
+    "semantic_hash": ""
+  },
+  "resources/GW_SMT-G2_Datasheet-EN.pdf": {
+    "mtime": 1784110864.5400243,
+    "ast_hash": "c159bacc1a06cb06bdb15c2d27e037c4",
+    "semantic_hash": ""
+  },
+  "resources/GW_XS_Datasheet-EN.pdf": {
+    "mtime": 1784110864.4461665,
+    "ast_hash": "900fa74746f7af8fb6675dcbbd2019c5",
+    "semantic_hash": ""
+  },
+  "resources/PAHAL N-TYPE-TOPCON-DATA-SHEET144-CELL.pdf": {
+    "mtime": 1784110863.138073,
+    "ast_hash": "18bfd5060b61018072daea7c3ee23fc2",
+    "semantic_hash": ""
+  },
+  "resources/PE-132HCTOPCon_BifacialDualGlass600-630W_India.pdf": {
+    "mtime": 1784110863.3809128,
+    "ast_hash": "fbbb82a662f5989dd15ce86036e76b8c",
+    "semantic_hash": ""
+  },
+  "resources/PE-144 HC PERC_Bifacial Transparent 525-555W.pdf": {
+    "mtime": 1784110863.716241,
+    "ast_hash": "079ebef86ffd32294235693851d787da",
+    "semantic_hash": ""
+  },
+  "resources/RAYZON Datasheet-Monofacial-535Wp-550Wp.pdf": {
+    "mtime": 1784110862.6852777,
+    "ast_hash": "1c945f00d1aaa67eb06135c9fc75a346",
+    "semantic_hash": ""
+  },
+  "resources/Solar Proposal - NILKANTH MAHADEV TRUST TEMPLE.pdf": {
+    "mtime": 1784109521.8327725,
+    "ast_hash": "6a72cfcc28761c3e9b6f13983786a1f8",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_30KW to 40KW.pdf": {
+    "mtime": 1784110864.0515504,
+    "ast_hash": "7c7846820a161dcedfb2a8d6aecc10bd",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_45KW to 75KW.pdf": {
+    "mtime": 1784110864.0201519,
+    "ast_hash": "a7f67b815c522a01351080df5bd42aac",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_SYS2000W-SYS4600W.pdf": {
+    "mtime": 1784110863.9847155,
+    "ast_hash": "3c2221d5ac17c3f491b16e4256c2fadd",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_SYS4600W-SYS6000W.pdf": {
+    "mtime": 1784110863.906941,
+    "ast_hash": "c67fe62fce6ba684470099e675dd6f81",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_SYT-100K-SYS136K.pdf": {
+    "mtime": 1784110863.7873769,
+    "ast_hash": "d5e0cfc2eece2250b91f132b2c8a27f0",
+    "semantic_hash": ""
+  },
+  "resources/SolarYaan_Datasheet_SYT-5K-25K.pdf": {
+    "mtime": 1784110863.8465502,
+    "ast_hash": "bec0a01c568801186e101f0b2a813077",
+    "semantic_hash": ""
+  },
+  "resources/Solar_Grid-Tie_Inverter.pdf": {
+    "mtime": 1784110866.3398378,
+    "ast_hash": "ab6e8099876bb4a86bda402db0b256a1",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S5-GC(25-50)K_IND_V2.pdf": {
+    "mtime": 1784110864.225605,
+    "ast_hash": "1e4a4f6223c769f051df9d2008d32b41",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S5-GC(50-60)K_IND_V2.pdf": {
+    "mtime": 1784110864.2499378,
+    "ast_hash": "25d606bb717c8bdc961f360a7fabe968",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S5-GR3P(5-20)K_IND_V2.pdf": {
+    "mtime": 1784110864.186518,
+    "ast_hash": "a9128b3fc9a1892ce0f433489420f07a",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S6-GR1P(1-3)K-M_IND_V2.pdf": {
+    "mtime": 1784110864.1069005,
+    "ast_hash": "5a89b0ffb060b6899293fe72fe21aa39",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S6-GR1P(4-5)K-S_IND_V2.pdf": {
+    "mtime": 1784110864.1327324,
+    "ast_hash": "6b102e2aa9c79c0a0d34dbe1b9ace62b",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_S6-GU350K-EHV_IND_V2.pdf": {
+    "mtime": 1784110864.3140488,
+    "ast_hash": "b21845a97f25bcb65f0aef76665ae93e",
+    "semantic_hash": ""
+  },
+  "resources/Solis_datasheet_Solis-(80-110)K-5G-PRO_IND_V2(2).pdf": {
+    "mtime": 1784110864.2884986,
+    "ast_hash": "480c56c6f13d463b681fa67fbdc28759",
+    "semantic_hash": ""
+  },
+  "resources/a33f2659-00b8-4301-b514-9c3b19937a3d.pdf": {
+    "mtime": 1784110864.8997424,
+    "ast_hash": "95977b9ab0388b982813cd0c0f774849",
+    "semantic_hash": ""
+  },
+  "resources/bfc24cfb-7218-453c-989d-ee6c2bb0e7c2.pdf": {
+    "mtime": 1784110864.9359019,
+    "ast_hash": "9e98d6d1d7b995b386206249d5b69824",
+    "semantic_hash": ""
+  },
+  "resources/d61373e8-3a87-49cf-a42a-dff8a47c5ec4.pdf": {
+    "mtime": 1784110865.7995212,
+    "ast_hash": "6a29df454c075fc0dcb02822cf0808c6",
+    "semantic_hash": ""
+  },
+  "resources/datasheet-adani-solar-india-605w-610w-615w-620w-625w-630w-635w-640w-g2g-topcon-n-type-dcr-non-dcr-elan-shine.pdf": {
+    "mtime": 1784110863.2261221,
+    "ast_hash": "b65703b636fdd9ab2d9db12f8040aa03",
+    "semantic_hash": ""
+  },
+  "resources/polycab-solar-three-phase-50kw-60kw-string-inverter-datasheet-india.pdf": {
+    "mtime": 1784110866.239316,
+    "ast_hash": "da36a030e8a5bfbe9790a6bf9b9fa901",
+    "semantic_hash": ""
+  },
+  "resources/solar-grid-tie-inverter-2kw-6kw.pdf": {
+    "mtime": 1784110866.2812798,
+    "ast_hash": "2ef8cb3ca1789fffd3008e868b1f29d4",
+    "semantic_hash": ""
+  },
+  "resources/solar-grid-tie-inverter-3-phase-5kw-30kw.pdf": {
+    "mtime": 1784110866.1644466,
+    "ast_hash": "bebad21c52aeccee9f70b691bd522f74",
+    "semantic_hash": ""
+  },
+  "logo/icon.png": {
+    "mtime": 1783061992.6771867,
+    "ast_hash": "baaa6c7537e52fc18f314db806a6f6d3",
+    "semantic_hash": ""
+  },
+  "logo/logo.png": {
+    "mtime": 1783061992.6421888,
+    "ast_hash": "3a6bd550767c45b6f586fe312f01b81f",
+    "semantic_hash": ""
+  },
+  "public/favicon.png": {
+    "mtime": 1784237735.5250075,
+    "ast_hash": "baaa6c7537e52fc18f314db806a6f6d3",
+    "semantic_hash": ""
+  },
+  "public/og-image.png": {
+    "mtime": 1784237735.5786586,
+    "ast_hash": "3a6bd550767c45b6f586fe312f01b81f",
+    "semantic_hash": ""
+  },
+  "src/assets/brand/uvr-icon.png": {
+    "mtime": 1784237735.4617991,
+    "ast_hash": "baaa6c7537e52fc18f314db806a6f6d3",
+    "semantic_hash": ""
+  },
+  "src/assets/brand/uvr-logo.png": {
+    "mtime": 1784237735.3948827,
+    "ast_hash": "3a6bd550767c45b6f586fe312f01b81f",
+    "semantic_hash": ""
+  },
+  "src/assets/images/uvr_battery_vault_1782761234130.jpg": {
+    "mtime": 1782858529.7371519,
+    "ast_hash": "4c1033bafc51ecb130c32cc70f13dca1",
+    "semantic_hash": ""
+  },
+  "src/assets/images/uvr_bifacial_panels_1782761204892.jpg": {
+    "mtime": 1782858529.7669532,
+    "ast_hash": "506585f5a14da37a99b08cf7e3378385",
+    "semantic_hash": ""
+  },
+  "src/assets/images/uvr_drone_survey_1782761249090.jpg": {
+    "mtime": 1782858529.751827,
+    "ast_hash": "3ae458471d9f64214eddbc32d44fce3b",
+    "semantic_hash": ""
+  },
+  "src/assets/images/uvr_smart_inverter_1782761219437.jpg": {
+    "mtime": 1782858529.725152,
+    "ast_hash": "e42dd18a33a8c6956804fb890b1079cd",
+    "semantic_hash": ""
+  }
+}
