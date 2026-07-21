@@ -8,12 +8,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
 import uvrBifacialPanels from '../assets/images/uvr_bifacial_panels_1782761204892.jpg';
 
-/** Update when founder confirms the event date */
 export const PARTNER_EVENT = {
   title: 'District Channel Partner Meet — Gujarat',
-  dateLabel: 'Date to be confirmed',
+  dateLabel: '26 July 2026',
   timeLabel: '10:00 AM – 8:00 PM',
   venueName: 'The Fern Residency Vadodara',
+
   venueAddress:
     'Alkapuri, RC Dutt Road, Behind Alkapuri Petrol Pump, Vishwas Colony, Alkapuri, Vadodara, 390007, Gujarat',
   mapsUrl:
@@ -34,7 +34,7 @@ const HEAR_ABOUT_OPTIONS = [
   'WhatsApp / SMS',
   'LinkedIn',
   'Facebook / Instagram',
-  'Influencer (RJ Devan)',
+  'Influencer (RJ Devang)',
   'Google Search',
   'Referral from colleague',
   'Industry event / association',
@@ -55,6 +55,7 @@ type FormState = {
   fullName: string;
   phone: string;
   email: string;
+  organizationType: 'individual' | 'firm' | '';
   company: string;
   city: string;
   preferredDistrict: string;
@@ -71,6 +72,7 @@ const initialForm: FormState = {
   fullName: '',
   phone: '',
   email: '',
+  organizationType: '',
   company: '',
   city: '',
   preferredDistrict: '',
@@ -128,7 +130,10 @@ export default function ChannelPartnerEvent() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       next.email = 'Enter a valid email';
     }
-    if (!form.company.trim()) next.company = 'Required';
+    if (!form.organizationType) next.organizationType = 'Select one';
+    if (form.organizationType === 'firm' && !form.company.trim()) {
+      next.company = 'Enter your company or firm name';
+    }
     if (!form.city.trim()) next.city = 'Required';
     if (!form.preferredDistrict.trim()) next.preferredDistrict = 'Required';
     if (!form.partnerType) next.partnerType = 'Select one';
@@ -163,7 +168,10 @@ export default function ChannelPartnerEvent() {
           fullName: form.fullName.trim(),
           phone,
           email: form.email.trim().toLowerCase(),
-          company: form.company.trim(),
+          organizationType:
+            form.organizationType === 'firm' ? 'Company / Firm' : 'Individual',
+          company:
+            form.organizationType === 'firm' ? form.company.trim() : 'Individual',
           city: form.city.trim(),
           preferredDistrict: form.preferredDistrict.trim(),
           partnerType: form.partnerType === 'new' ? 'New Channel Partner' : 'Existing Channel Partner',
@@ -417,19 +425,67 @@ export default function ChannelPartnerEvent() {
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
-                        Company / Firm *
+                        Are you an individual or a company? *
                       </label>
-                      <input
-                        className={fieldClass(!!errors.company)}
-                        value={form.company}
-                        onChange={(e) => update('company', e.target.value)}
-                        placeholder="Your dealership or firm name"
-                        autoComplete="organization"
-                      />
-                      {errors.company && (
-                        <p className="text-[11px] text-rose-400">{errors.company}</p>
+                      <div
+                        className="grid grid-cols-2 gap-2"
+                        role="radiogroup"
+                        aria-label="Applicant type"
+                      >
+                        {(
+                          [
+                            { id: 'individual' as const, label: 'Individual', icon: Users },
+                            { id: 'firm' as const, label: 'Company / Firm', icon: Building2 },
+                          ]
+                        ).map(({ id, label, icon: Icon }) => (
+                          <button
+                            key={id}
+                            type="button"
+                            role="radio"
+                            aria-checked={form.organizationType === id}
+                            onClick={() => {
+                              update('organizationType', id);
+                              if (id === 'individual') update('company', '');
+                            }}
+                            className={`flex items-center justify-center gap-2 px-3 py-3 rounded-xl border text-xs transition-colors ${
+                              form.organizationType === id
+                                ? 'bg-orange-500/15 border-orange-500 text-orange-300 font-semibold'
+                                : 'bg-slate-950/60 border-slate-700 text-slate-300 hover:border-slate-500'
+                            }`}
+                          >
+                            <Icon className="w-4 h-4 shrink-0" />
+                            {label}
+                          </button>
+                        ))}
+                      </div>
+                      {errors.organizationType && (
+                        <p className="text-[11px] text-rose-400">{errors.organizationType}</p>
                       )}
                     </div>
+                    <AnimatePresence>
+                      {form.organizationType === 'firm' && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="space-y-1.5 sm:col-span-2 overflow-hidden"
+                        >
+                          <label className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                            Company / Firm Name *
+                          </label>
+                          <input
+                            className={fieldClass(!!errors.company)}
+                            value={form.company}
+                            onChange={(e) => update('company', e.target.value)}
+                            placeholder="Your dealership or firm name"
+                            autoComplete="organization"
+                          />
+                          {errors.company && (
+                            <p className="text-[11px] text-rose-400">{errors.company}</p>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                     <div className="space-y-1.5">
                       <label className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
                         Current City *

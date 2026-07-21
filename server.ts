@@ -140,7 +140,7 @@ async function startServer() {
         "fullName",
         "phone",
         "email",
-        "company",
+        "organizationType",
         "city",
         "preferredDistrict",
         "partnerType",
@@ -159,12 +159,18 @@ async function startServer() {
         return res.status(400).json({ error: "Invalid phone number" });
       }
 
+      const organizationType = String(body.organizationType).trim();
+      if (organizationType === "Company / Firm" && !String(body.company || "").trim()) {
+        return res.status(400).json({ error: "Missing field: company" });
+      }
+
       const payload = {
         timestamp: new Date().toISOString(),
         fullName: String(body.fullName).trim(),
         phone,
         email: String(body.email).trim().toLowerCase(),
-        company: String(body.company).trim(),
+        organizationType,
+        company: String(body.company || "Individual").trim(),
         city: String(body.city).trim(),
         preferredDistrict: String(body.preferredDistrict).trim(),
         partnerType: String(body.partnerType).trim(),
